@@ -1,0 +1,188 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
+@import "/styles-admin.scss";
+@import "/styles-member.scss";
+/* You can add global styles to this file, and also import other style files */
+
+
+input:disabled.enabled
+{
+    background-color: #fff;
+}
+
+::placeholder {
+    color: #ccc !important;
+    opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #ccc !important;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: #ccc !important;
+}
+
+.bg-front 
+{
+    background-image: url('/assets/front/img/bg.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+.bg-wiz 
+{
+     background-color: #082e40;
+     background-size: cover;
+     background-attachment: fixed;
+}
+
+.hide
+{
+    display: none;
+}
+
+.jumbotron 
+{
+    background-color: white !important;
+}
+
+.ng-valid[required], .ng-valid.required  {
+  border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form)  {
+  border-left: 5px solid #a94442; /* red */
+}
+
+.page-item.disabled
+{
+    cursor: not-allowed;
+}
+
+
+.pointer
+{
+    cursor: pointer;
+}
+
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  margin-bottom: 60px; /* Margin bottom by footer height */
+}
+.footer
+{
+
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+
+/* Custom page CSS
+-------------------------------------------------- */
+/* Not required for template or sticky footer method. */
+
+.btn-google
+{
+  background: rgba(219, 68, 55, 1) !important;
+  border-color: rgba(219, 68, 55, 1) !important;
+  transition: 400ms;
+  &:hover
+  {
+    background: rgba(219, 68, 55, 0.8) !important;
+    border-color: rgba(219, 68, 55, 0.8) !important;
+    transition: 400ms;
+  }
+}
+
+.btn-facebook
+{
+  background: rgba(59, 89, 152, 1) !important;
+  border-color: rgba(59, 89, 152, 1) !important;
+  transition: 400ms;
+  &:hover
+  {
+    background: rgba(59, 89, 152, 0.8) !important;
+    border-color: rgba(59, 89, 152, 0.8) !important;
+    transition: 400ms;
+  }
+}
+
+#or {
+  position: relative;
+  width: 300px;
+  height: 50px;
+  
+  line-height: 50px;
+  text-align: center;
+}
+
+#or::before
+{
+  position: absolute;
+  width: 130px;
+  height: 1px;
+  
+  top: 24px;
+  
+  background: rgba(255,255,255,1);
+  background: -moz-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(145,145,145,1) 66%, rgba(145,145,145,1) 100%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(255,255,255,1)), color-stop(66%, rgba(145,145,145,1)), color-stop(100%, rgba(145,145,145,1)));
+  background: -webkit-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(145,145,145,1) 66%, rgba(145,145,145,1) 100%);
+  background: -o-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(145,145,145,1) 66%, rgba(145,145,145,1) 100%);
+  background: -ms-linear-gradient(left, rgba(255,255,255,1) 0%, rgba(145,145,145,1) 66%, rgba(145,145,145,1) 100%);
+  background: linear-gradient(to right, rgba(255,255,255,1) 0%, rgba(145,145,145,1) 66%, rgba(145,145,145,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#919191', GradientType=1 );
+  content: '';
+}
+#or::after {
+  position: absolute;
+  width: 130px;
+  height: 1px;
+  
+  top: 24px;
+  
+  background: rgba(145,145,145,1);
+  background: -moz-linear-gradient(left, rgba(145,145,145,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 66%);
+  background: -webkit-gradient(left top, right top, color-stop(0%, rgba(145,145,145,1)), color-stop(100%, rgba(255,255,255,1)), color-stop(66%, rgba(255,255,255,1)));
+  background: -webkit-linear-gradient(left, rgba(145,145,145,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 66%);
+  background: -o-linear-gradient(left, rgba(145,145,145,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 66%);
+  background: -ms-linear-gradient(left, rgba(145,145,145,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 66%);
+  background: linear-gradient(to right, rgba(145,145,145,1) 0%, rgba(255,255,255,1) 100%, rgba(255,255,255,1) 66%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#919191', endColorstr='#ffffff', GradientType=1 );
+  
+  content: '';
+}
+
+#or::before {
+  left: 0;
+}
+
+#or::after {
+  right: 0;
+}
+
+.label-register
+{
+  font-size: 14px;
+  color: #333 !important;
+  font-weight: 500 !important;
+}
+
+@keyframes spincircle
+{
+  from {transform: rotate(0deg)}
+  to {transform: rotate(360deg)}
+}
+
+.button-spinner
+{
+  animation: spincircle 1s linear infinite;
+}

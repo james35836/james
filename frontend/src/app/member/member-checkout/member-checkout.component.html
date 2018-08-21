@@ -1,0 +1,108 @@
+<div class="member-subtitle">
+	How would you like to receive your order?
+</div>
+
+<div class="box-list-container">
+	<div class="box-list bigger {{checkout_method != 'indirect' ? 'active': ''}}" (click)="changeActiveComplan('direct')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="image"><img src="/assets/front/img/shop.png"></div>
+		<div class="label">Pick Up</div>
+		<div class="charge">No Charge</div>
+	</div>
+	<div class="box-list bigger {{checkout_method == 'indirect' ? 'active': ''}} " (click)="changeActiveComplan('indirect')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="image"><img src="/assets/front/img/deliver.png"></div>
+		<div class="label">Delivery</div>
+		<div class="charge">PHP 120.00 Charge</div>
+	</div>
+	
+</div>
+<div class="box-list-container offset-md-3 col-md-6 offset-md-3 {{checkout_method != 'indirect' ? '': 'hide'}}">
+	<div class="member-subtitle smaller">
+		Choose pick up location
+	</div>
+	<select class="form-control" *ngIf="branchList" [(ngModel)]="pickup_location">
+		<option *ngFor="let data of branchList" value="{{data.branch_id}}"  >{{data.branch_name}}({{data.branch_location}})</option>
+	</select>
+</div>
+
+<div class="row">
+	<div class="col-md-7">
+		<div class="member-box push-bottom">
+			<div class="member-box-content">
+				<div class="member-subtitle smaller">
+					Item on Cart
+				</div>
+				<div class="cart-container checkout">
+					<div class="table-responsive">
+						<table class="table table-sm">
+							<thead>
+								<tr>
+									<th class="text-center">Image</th>
+									<th class="text-center">Product Name</th>
+									<th class="text-center">Unit Price</th>
+									<th class="text-center" width="100px">Quantity</th>
+									<th class="text-right">Total</th>
+								</tr>
+							</thead>
+							<tbody *ngIf="checkout_items">
+									<tr *ngFor="let items of checkout_items; let i = index;">
+										<td class="text-center"><img src="//ph-test-11.slatic.net/p/fastcute-brand-cycling-jersey-short-sleeve-quick-dry-shirt-comfortable-breathable-3d-cushion-tights-sportswear-fcs-0406-9052-9850888-0f22ce5156264da048f4682f9563920c-catalog.jpg_200x200q80.jpg_.webp"></td>
+										<td class="text-center">{{items.item_sku}}</td>
+										<td class="text-center">{{items.item_price}}</td>
+										<td class="text-center"><input class="form-control form-control-sm text-center" type="number" (keyup)="get_total()" [(ngModel)]="checkout_items[i].item_qty" [ngModelOptions]="{standalone: true}" ></td>
+										<td class="text-right"><b>PHP {{items.item_price * checkout_items[i].item_qty}}</b></td>
+									</tr>
+									
+								</tbody>
+							<tfoot>
+								<tr>
+									<th class="text-right" colspan="4">Grand Total</th>
+									<th class="text-right shopping-color">PHP {{total}}</th>
+								</tr>
+							</tfoot>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-5">
+
+		<div class="member-box">
+			<div class="member-subtitle smaller">
+				Order Summary
+			</div>
+			<div class="member-box-content">
+				<div class="cash-out-summary">
+					<div class="breakdown clearfix dotted-bottom">
+						<div class="label pull-left">Status</div>
+						<div class="value pull-right {{status_checker == 'invalid' ? 'red' : 'green'}}">{{status_checker == 'invalid' ? "You don't have enough balance" : "You have enough balance."}}</div>
+					</div>
+					<div class="breakdown clearfix dotted-bottom">
+						<div class="label pull-left">Paying Wallet</div>
+						<div class="value pull-right">PHP Wallet</div>
+					</div>
+					<div class="breakdown clearfix dotted-bottom">
+						<div class="label pull-left">Current Wallet</div>
+						<div class="value pull-right">PHP {{current_wallet | number:'1.2-2'}}</div>
+					</div>
+					<div class="breakdown clearfix dotted-bottom">
+						<div class="label pull-left">Amount Due</div>
+						<div class="value pull-right">PHP {{subTotal | number:'1.2-2'}}</div>
+					</div>
+					<div class="breakdown clearfix dotted-bottom">
+						<div class="label pull-left">Delivery Charge</div>
+						<div class="value pull-right">{{checkout_method == null || checkout_method =='direct' ? 'No Delivery Charge' : 'PHP 120.00'}}</div>
+					</div>
+					<div class="breakdown clearfix">
+						<div class="label pull-left">Amount Due</div>
+						<div class="value pull-right shopping-color">PHP {{grandTotal | number:'1.2-2'}}</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="proceed-button"><button class="btn btn-sm btn-primary  shopping-primary" (click)="checkout_submit()" >Place Order &raquo;</button></div>
+	</div>
+</div>

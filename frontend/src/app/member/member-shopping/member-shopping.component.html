@@ -1,0 +1,22 @@
+<div class="member-subtitle">
+	Purchase a Membership Kit
+</div>
+<div class="product-list-container">
+	<div class="box-list" routerLink="/member/shopping/product" (click)="product_id(data.item_id)"  *ngFor="let data of membershipList">
+		<div class="image"><img src="//ph-test-11.slatic.net/p/fastcute-brand-cycling-jersey-short-sleeve-quick-dry-shirt-comfortable-breathable-3d-cushion-tights-sportswear-fcs-0406-9052-9850888-0f22ce5156264da048f4682f9563920c-catalog.jpg_200x200q80.jpg_.webp"></div>
+		<div class="label">{{data.item_sku}}</div>
+		<div class="price">PHP {{data.item_price}}</div>
+	</div>
+</div>
+<div class="member-subtitle">
+	Purchase our Products
+</div>
+
+<div class="product-list-container">
+	<div class="box-list" routerLink="/member/shopping/product" (click)="product_id(data.item_id)" *ngFor="let data of productList">
+		<div class="image"><img src="//ph-test-11.slatic.net/p/fastcute-brand-cycling-jersey-short-sleeve-quick-dry-shirt-comfortable-breathable-3d-cushion-tights-sportswear-fcs-0406-9052-9850888-0f22ce5156264da048f4682f9563920c-catalog.jpg_200x200q80.jpg_.webp"></div>
+		<div class="label">{{data.item_sku}}</div>
+		<div class="price">PHP {{data.item_price}}</div>
+		<div class="pv">{{data.item_points_personal_pv}} PV</div>
+	</div>
+</div>

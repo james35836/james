@@ -1,0 +1,93 @@
+@import "../../app.component";
+
+* 
+{
+    font-family: "Lato", sans-serif;
+}
+
+.content-text
+{
+	font-family: $ff3;
+	font-weight: $light;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+}
+
+.caption-text-md
+{
+	@extend .content-text;
+	color: #41c3ac;
+	font-size: 18px;
+}
+
+.page-section
+{
+	padding: 105px 0 50px 0;
+
+	.holder-title
+	{
+		font-family: $ff3;
+		font-weight: $bold;
+		font-size: 17px;
+		color: #545454;
+	}
+}
+
+.section-header
+{
+	font-family: $ff3;
+	font-weight: $light;
+	font-size: 40px;
+	color: #082e40;
+}
+
+.s-feature
+{
+	.with-bg
+	{
+		background-color: #f3f3f3;
+	}
+
+	.feature-holder
+	{
+		.holder-title
+		{
+
+		}
+
+		.basic-feature-holder
+		{
+			@media screen and (max-width: 500px)
+			{
+				flex-wrap: wrap;
+				justify-content: center;
+				text-align: center;
+			}
+
+			.icon-holder
+			{
+				min-width: 70px;
+				max-width: 70px;
+			}
+
+			.icon-desc
+			{
+				.desc-title
+				{
+					font-family: $ff3;
+					font-weight: $reg;
+					font-size: 22px;
+					color: #082e40;
+				}
+
+				.desc
+				{
+					@extend .desc-title;
+					font-size: 15px;
+					color: #545454;
+				}
+			}
+		}
+	}
+}

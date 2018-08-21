@@ -1,0 +1,226 @@
+<div class="member-layout">
+	<div id="overlay" (click)="sideNavOff()"></div>
+
+	<div class="side-nav">
+		<nav class="pushmenu pushmenu-left">
+			<a href="javascript:">
+				<div class="profile-img-container">
+					<div class="row-no-padding clearfix">
+						<div class="col-xs-12">
+							<div class="profile-img">
+								<img src="../../../assets/front/img/boy.svg" width="16">
+							</div>
+							<div class="text-holder">
+								<div class="name-text text-overflow" *ngIf="user">{{ user.name }}</div>
+								<!-- <div class="subtext text-overflow"></div> -->
+							</div>
+						</div>
+					</div>
+				</div>
+			</a>
+			<ul class="links">
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/dashboard" routerLinkActive="active">
+						<i class="fa fa-credit-card"></i> My Wallet</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/cash-in" routerLinkActive="active">
+						<i class="fa fa-bank"></i> Cash In</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/cash-out" routerLinkActive="active">
+						<i class="fa fa-money"></i> Cash Out</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/codevault" routerLinkActive="active">
+						<i class="fa fa-key"></i> Code Vault</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/earning" routerLinkActive="active">
+						<i class="fa fa-credit-card"></i> Earnings</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/genealogy" routerLinkActive="active">
+						<i class="fa fa-cubes"></i> My Network</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/shopping" routerLinkActive="active">
+						<i class="fa fa-shopping-bag"></i> Shopping</a>
+				</li>
+			</ul>
+			<ul class="links pt-3">
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/order">My Orders</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/settings">Account Settings</a>
+				</li>
+				<li>
+					<a (click)="sideNavOff()" routerLink="/member/slot">Switch Slot</a>
+				</li>
+				<li>
+					<a (click)="onLogout()">Logout</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+
+	<div class="header py-2">
+		<div class="container">
+			<div class="header-wrapper">
+				<div class="company-info">
+					<div id="nav_list" (click)="sideNavOn()">
+						<i class="fa fa-bars hamburger"></i>
+					</div>
+					<div class="company-logo">
+						<i class="fa fa-themeisle"></i>
+					</div>
+					<div class="company-name">Orabella</div>
+				</div>
+				<div class="search-box">
+					<div class="search-input">
+						<input placeholder="Search for product, slot code or name..." type="text" name="">
+					</div>
+					<div class="search-icon">
+						<i class="fa fa-search"></i>
+					</div>
+				</div>
+				<div class="notification-box">
+					<div class="notification" data-toggle="modal" data-target="#cartPopup">
+						<i class="fa fa-shopping-cart"></i>
+						<span class="label">CART</span>
+						<div class="count-cart">{{cart_count == null ? '0' : cart_count}}</div>
+					</div>
+				</div>
+				<div class="name-container">
+					<div class="name" *ngIf="user">{{ user.name }}</div>
+					<div class="dropdown-arrow">
+						<i class="fa fa-caret-down"></i>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown-container">
+							<div (click)="hideDropdown()" routerLink="/member/order" class="menu">My Orders</div>
+							<div (click)="hideDropdown()" routerLink="/member/settings" class="menu">Account Settings</div>
+							<div (click)="hideDropdown()" routerLink="/member/slot" class="menu">Switch Slot</div>
+							<div (click)="onLogout()" class="menu top-divide">Logout</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="navigation">
+		<a class="nav" routerLink="/member/dashboard" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-credit-card"></i></div>
+			<div class="nav-label">My Wallet</div>
+		</a>
+		<a class="nav" routerLink="/member/cash-in" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-bank"></i></div>
+			<div class="nav-label">Cash In</div>
+		</a>
+		<a class="nav" routerLink="/member/cash-out" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-money"></i></div>
+			<div class="nav-label">Cash Out</div>
+		</a>
+		<a class="nav" routerLink="/member/codevault" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-key"></i></div>
+			<div class="nav-label">Code Vault</div>
+		</a>
+		<a class="nav" routerLink="/member/earning" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-credit-card"></i></div>
+			<div class="nav-label">Earnings</div>
+		</a>
+		<a class="nav" routerLink="/member/genealogy" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-cubes"></i></div>
+			<div class="nav-label">My Network</div>
+		</a>
+		<a class="nav" routerLink="/member/shopping" routerLinkActive="active">
+			<div class="nav-icon"><i class="fa fa-shopping-bag"></i></div>
+			<div class="nav-label">Shopping</div>
+		</a>
+	</div>
+
+	<div class="main-content">
+		<router-outlet></router-outlet>
+	</div>
+
+	<div class="footer">
+		<div class="clearfix">
+			<div class="row">
+				<div class="col-md-3 text-left"><div class="copyright">&copy; 2018 Orabella.net</div></div>
+				<div class="col-md-6 text-center">
+					<div class="footer-nav">
+						<a class="nav" href="">About</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">Careers</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">Tems</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">Privacy</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">AML Policy</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">Press</a>
+					</div>
+				</div>
+				<div class="col-md-3 text-right">
+					<div class="social-media-links">
+						<a class="nav" href=""><i class="fa fa-facebook-official"></i></a>
+						<a class="nav" href=""><i class="fa fa-twitter-square"></i></a>
+						<a class="nav" href=""><i class="fa fa-google-plus-official"></i></a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+
+<!-- POPUP - CART -->
+<div class="modal fade" id="cartPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-lg" role="document">
+		<div class="modal-content">
+			<form>
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-shopping-cart"></i> Cart</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="cart-container">
+						<div class="table-responsive">
+							<table class="table table-sm">
+								<thead>
+									<tr>
+										<th class="text-center">Image</th>
+										<th class="text-center">Product Name</th>
+										<th class="text-center">Unit Price</th>
+										<th class="text-center" width="100px">Quantity</th>
+										<th class="text-right">Total</th>
+									</tr>
+								</thead>
+								<tbody *ngIf="show_cart">
+									<tr *ngFor="let items of show_cart; let i = index;">
+										<td class="text-center"><img src="//ph-test-11.slatic.net/p/fastcute-brand-cycling-jersey-short-sleeve-quick-dry-shirt-comfortable-breathable-3d-cushion-tights-sportswear-fcs-0406-9052-9850888-0f22ce5156264da048f4682f9563920c-catalog.jpg_200x200q80.jpg_.webp"></td>
+										<td class="text-center">{{items.item_sku}}</td>
+										<td class="text-center">{{items.item_price | number:'1.2-2'}}</td>
+										<td class="text-center"><input class="form-control form-control-sm text-center" type="number" (keyup)="get_total()" [(ngModel)]="show_cart[i].item_qty" [ngModelOptions]="{standalone: true}" ></td>
+										<td class="text-right"><b>PHP {{items.item_price * show_cart[i].item_qty | number:'1.2-2'}}</b></td>
+									</tr>
+									
+								</tbody>
+								<tfoot>
+									<tr>
+										<th class="text-right" colspan="4">Grand Total</th>
+										<th class="text-right shopping-color">PHP {{total | number:'1.2-2'}}</th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary shopping-secondary"  data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button type="button" data-dismiss="modal" class="btn btn-primary shopping-primary" (click)="checkout()" ><i class="fa fa-check"></i> Checkout</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,51 @@
+.btn-c
+{
+	font-family: $ff3;
+	padding: 8px 25px;
+	font-size: 14px;
+	font-weight: $bold !important;
+	border: 0px;
+	color: #fff;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+.btn-c-lg
+{
+	padding: 10px 45px;
+	font-size: 14px;
+}
+
+.btn-fblue
+{
+	background-color: $dblue;
+}
+
+.btn-fgreen
+{
+	background-color: #41c3ac;
+	color: #fff !important;
+}
+
+.btn-fgreen-bb
+{
+	background-color: #41c3ac;
+	border-bottom: 5px solid #2c9d89;
+	color: #fff !important;
+}
+
+.btn-forange
+{
+	background-color: #f06c16;
+}
+
+.btn-forange-bb
+{
+	background-color: #f06c16;
+	border-bottom: 4px solid #ba591a;
+}
+
+.btn-link
+{
+	color: #41c3ac !important;
+}

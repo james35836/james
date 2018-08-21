@@ -1,0 +1,13 @@
+<div class="text-center bg-login">
+    <form class="form-signin" (ngSubmit)="onSubmit()" #signInForm="ngForm">
+        <h1 class="h3 mb-3 font-weight-normal">Admin Login</h1>
+        <div class="alert alert-danger {{ error_message != null ? '' : 'hide' }}" role="alert">
+          {{ error_message }}
+        </div>
+        <label for="inputEmail" class="sr-only">Email address</label>
+        <input [(ngModel)]="model.email" name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+        <label for="inputPassword" class="sr-only">Password</label>
+        <input [(ngModel)]="model.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+        <button class="btn btn-lg btn-primary btn-block {{ submitted ? 'disabled' : '' }}" type="submit">Sign in</button>
+    </form>
+</div>

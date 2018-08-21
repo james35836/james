@@ -1,0 +1,549 @@
+<div class="client-slide">
+	<img src="http://www.twitrcovers.com/wp-content/uploads/2015/04/anime-girl-boy-l.jpg">
+</div>
+<div class="data-content">
+	<div class="row">
+		<div class="col-md-4">
+			<div class="member-box push-bottom current-wallet">
+				<div class="member-box-title">CURRENT WALLET OF SLOT <span class="primary-color" *ngIf="layout.current_slot">{{layout.current_slot.slot_no}}</span></div>
+				<div class="member-box-content">
+					<div class="main-wallet">{{default.currency_abbreviation}} {{default.wallet_amount | number:'1.2-2'}}</div>
+				</div>
+				<div class="member-box-button" data-toggle="modal" data-target="#popupSendWallet"><i class="fa fa-send"></i>  Send Wallet</div>
+			</div>
+
+			<div class="member-box push-bottom">
+				<div class="member-box-title">ALL WALLET(S)</div>
+				<div class="member-box-content">
+					<div class="all-wallet">
+						<a *ngFor="let item of layout.wallet" (click)="getWallet(item.wallet_id)" data-toggle="modal" data-target="#popupQRAdresss" class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">{{item.currency_abbreviation}}</div>
+								<div class="pull-right amount" *ngIf="item.currency_abbreviation == 'BTC'">{{item.wallet_amount | number:'1.8'}}</div>
+								<div class="pull-right amount" *ngIf="item.currency_abbreviation != 'BTC'">{{item.wallet_amount | number:'1.2-2'}}</div>
+							</div>
+						</a>
+					</div>
+				</div>
+				<div class="member-box-button" data-toggle="modal" data-target="#popupConvertWallet"><i class="fa fa-exchange"></i>  Convert</div>
+			</div>
+
+			<div class="member-box">
+				<div class="member-box-title">POINTS BREAKDOWN</div>
+				<div class="member-box-content">
+					<div class="all-wallet">
+						<a class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">GC</div>
+								<div class="pull-right amount">0.00</div>
+							</div>
+						</a>
+						<a class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">PPV</div>
+								<div class="pull-right amount">0.00</div>
+							</div>
+						</a>
+						<a class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">GPV</div>
+								<div class="pull-right amount">0.00</div>
+							</div>
+						</a>
+						<a class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">LEFT POINTS</div>
+								<div class="pull-right amount" *ngIf="layout.current_slot">{{ layout.current_slot.slot_left_points | number:'1.2-2' }}</div>
+							</div>
+						</a>
+						<a class="wallet-all-list" href="javascript:">
+							<div class="clearfix">
+								<div class="pull-left currency">RIGHT POINTS</div>
+								<div class="pull-right amount" *ngIf="layout.current_slot">{{ layout.current_slot.slot_right_points | number:'1.2-2' }}</div>
+							</div>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-8">
+			<div class="main-actions">
+				<div class="action" data-toggle="modal" data-target="#popupCreateSlot">
+					<div class="icon">
+						<i class="fa fa-plus"></i>
+					</div>
+					<div class="info">
+						<div class="name">Activate Slot</div>
+						<div class="description">A slot is necesarry in order for you to earn.</div>
+					</div>
+				</div>
+				<div class="action" data-toggle="modal" data-target="#popupUnplacedDownlineSlot">
+					<div class="icon">
+						<i class="fa fa-hand-pointer-o"></i>
+					</div>
+					<div class="info">
+						<div class="name">Place Downlines</div>
+						<div class="description">Place slots that you've sponsored.</div>
+					</div>
+				</div>
+				<div class="action">
+					<div class="icon">
+						<i class="fa fa-share-alt"></i>
+					</div>
+					<div class="info">
+						<div class="name">Replicated Link</div>
+						<div class="description">Share the good news and get rewarded.</div>
+					</div>
+				</div>
+				<!-- <div class="form-row clearfix">
+					<div class="col-md-4">
+						<div class="action" data-toggle="modal" data-target="#popupCreateSlot">
+							<div class="icon">
+								<i class="fa fa-plus"></i>
+							</div>
+							<div class="info">
+								<div class="name">Activate Slot</div>
+								<div class="description">A slot is necesarry in order for you to earn.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="action" data-toggle="modal" data-target="#popupUnplacedDownlineSlot">
+							<div class="icon">
+								<i class="fa fa-hand-pointer-o"></i>
+							</div>
+							<div class="info">
+								<div class="name">Place Downlines</div>
+								<div class="description">Place slots that you've sponsored.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="action">
+							<div class="icon">
+								<i class="fa fa-share-alt"></i>
+							</div>
+							<div class="info">
+								<div class="name">Replicated Link</div>
+								<div class="description">Share the good news and get rewarded.</div>
+							</div>
+						</div>
+					</div>
+				</div> -->
+			</div> 
+
+			<div class="member-box-tab">
+				<!-- TABS -->
+				<ul class="nav nav-tabs" id="myTab" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" data-toggle="tab" href="#wallet-history" role="tab" aria-controls="modify" aria-selected="true">Wallet History</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" id="details-tab" data-toggle="tab" href="#cashout-history" role="tab" aria-controls="details" aria-selected="true">Cash Out History</a>
+					</li>
+				</ul>
+				<div class="tab-content">
+					<!-- WALLET HISTORY TAB -->
+					<div class="tab-pane fade show active" id="wallet-history" role="tabpanel">
+						<div class="wallet-history-container">
+							<div class="wallet-history-command">
+								<div class="form-row clearfix">
+									<div class="col-md-2">
+										<div class="command mb-2">
+											<select class="form-control form-control-sm">
+												<option>UPT</option>
+												<option>PHP</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="mb-2">
+											<select class="form-control form-control-sm">
+												<option>July</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="command mb-2">
+											<select class="form-control form-control-sm">
+												<option>2018</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<div class="command mb-2 pull-right">
+											<button class="btn btn-sm btn-secondary">
+												<i class="fa fa-file-excel-o"></i> Export Wallet History</button>
+										</div>
+									</div>
+								</div>
+								
+								
+							</div>
+							<div class="table-responsive">
+								<table class="table table-sm">
+									<thead>
+										<tr>
+											<th>Posting Date</th>
+											<th>Detail</th>
+											<th class="text-center">Debit / Credit</th>
+											<th class="text-right">Amount</th>
+											<th class="text-right">Running Balance</th>
+										</tr>
+									</thead>
+									<tbody *ngIf="wallet_log">
+										<tr *ngFor="let log of wallet_log.wallet; let i = index; ">
+											<td>{{log.wallet_log_date_created}}</td>
+											<td>{{log.wallet_log_details}}</td>
+											<td class="text-center">{{log.wallet_log_type}}</td>
+											<td class="text-right">{{log.wallet_log_amount | number : '1.2-2'}}</td>
+											<td class="text-right">{{log.wallet_log_running_balance | number : '1.2-2'}}</td>
+										</tr>
+										<tr *ngIf="wallet_log.wallet.length == 0">
+											<td colspan="5" class="text-center">No Data</td>
+										</tr>
+									</tbody>
+									<tbody *ngIf="wallet_log_loading">
+										<tr>
+											<td colspan="5" class="text-center"><i class="fa fa-spinner fa-pulse fa-fw"></i> Loading</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th class="text-right" colspan="4">Ending Balance</th>
+											<th class="text-right primary-color" *ngIf="wallet_log">PHP {{wallet_log.total_running}}</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
+
+					<!-- CASH OUT HISTORY -->
+					<div class="tab-pane fade" id="cashout-history" role="tabpanel">
+						<div class="wallet-history-container">
+							<div class="wallet-history-command">
+								<div class="form-row">
+									<div class="col-md-2">
+										<div class="command mb-2">
+											<select class="form-control form-control-sm">
+												<option>UPT</option>
+												<option>PHP</option>
+												<option>GC</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-2">
+										<div class="command mb-2">
+											<select class="form-control form-control-sm">
+												<option>2018</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-8">
+										<div class="command mb-2 pull-right">
+											<button class="btn btn-sm btn-secondary">
+												<i class="fa fa-file-excel-o"></i> Export Cash Out History</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="table-responsive">
+								<table class="table table-sm table-hover">
+									<thead>
+										<tr>
+											<th>Reference<br>Code</th>
+											<th>Request<br>Date</th>
+											<th>Process<br>Date</th>
+											<th class="text-center">Status</th>
+											<th class="text-right">Wallet<br>Deduction</th>
+											<th class="text-right">Charge</th>
+											<th class="text-right">Cash Out<br>Amount</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="pointer">
+											<td>00001</td>
+											<td>05/21/2018</td>
+											<td>05/22/2018</td>
+											<td class="text-center">Processed</td>
+											<td class="text-right">100,800.00</td>
+											<td class="text-right">3,000.00</td>
+											<td class="text-right">95,800.00</td>
+										</tr>
+										<tr class="pointer">
+											<td>00001</td>
+											<td>05/21/2018</td>
+											<td>05/22/2018</td>
+											<td class="text-center">Processed</td>
+											<td class="text-right">100,800.00</td>
+											<td class="text-right">3,000.00</td>
+											<td class="text-right">95,800.00</td>
+										</tr>
+									</tbody>
+									<tfoot>
+										<tr>
+											<th colspan="4"></th>
+											<th class="text-right">200,500.00</th>
+											<th class="text-right">6,000.00</th>
+											<th class="text-right primary-color">PHP 192,100.00</th>
+										</tr>
+									</tfoot>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- POPUP - CREATE SLOT -->
+<div class="modal fade" id="popupCreateSlot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<form (ngSubmit)="onSubmitCreateSlot()" #createslotForm="ngForm" class="create_slot_form">
+				<div class="member-subtitle">
+					Activate Slot
+				</div>
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label><b>Code</b></label>
+							<input placeholder="E.G P00001, P00002" name="code" type="text" class="form-control form-control-sm" value="" [(ngModel)]="add_slot.code">
+						</div>
+						<div class="form-group col-md-6">
+							<label><b>Pin</b></label>
+							<input placeholder="Enter Pin" type="text" name="pin" class="form-control form-control-sm" value="" [(ngModel)]="add_slot.pin">
+						</div>
+						<div class="form-group col-md-12">
+							<label><b>Sponsor (Slot Code)</b></label>
+							<input placeholder="Enter slot code of your Sponsor" name="slot_sponsor" type="text" class="form-control form-control-sm" value=""[(ngModel)]="add_slot.slot_sponsor">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary create_slot_form_close" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button type="submit" class="btn btn-primary createthisownslot"><i class="fa fa-check"></i> Continue</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+<!-- POPUP - PLACE YOUR UNPLACED DOWNLINE  -->
+<div class="modal fade" id="popupUnplacedDownlineSlot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content" *ngIf="unplaced_dl_proceed == 1">
+			<form (ngSubmit)="onSubmitDownlineUnplacedSlot()" #createslotForm="ngForm" class="unplace_downline_form">
+				<div class="member-subtitle">
+					Place Slot
+				</div>
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label><b>Place your slot</b></label>
+							<select class="form-control" [(ngModel)]="place_the_downline.slot_no" name="unplaced_slot_id">
+								<ng-container *ngIf="unplaced_downline_slots">
+									<option *ngFor="let unplaced of unplaced_downline_slots" value="{{unplaced.slot_no}}"> {{unplaced.slot_no}} </option>
+								</ng-container>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label><b>Placement</b></label>
+							<input type="text" class="form-control" name="unplaced_placement" [(ngModel)]="place_the_downline.placement">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label><b>Position</b></label>
+							<select class="form-control" [(ngModel)]="place_the_downline.position" name="unplaced_position">
+									<option value="LEFT" selected>LEFT</option>
+									<option value="RIGHT">RIGHT</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary unplace_downline_form_close" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button type="submit" class="btn btn-primary placethisslot"><i class="fa fa-check"></i> Place this slot</button>
+				</div>
+			</form>
+		</div>
+
+		<div class="modal-content">
+			<div class="member-subtitle" *ngIf="unplaced_dl_proceed == 0">
+				No unplaced downline
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- POPUP - PLACE YOUR OWNED UNPLACED SLOT -->
+<div class="modal fade" id="popupUnplacedSlot" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<form (ngSubmit)="onSubmitOwnUnplacedSlot()" #createslotForm="ngForm" class="unplace_slot_form">
+				<div class="member-subtitle">
+					Place Slot
+				</div>
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label><b>Place your slot</b></label>
+							<select class="form-control" [(ngModel)]="place_the_slot.slot_no" name="unplaced_slot_id">
+								<ng-container *ngIf="unplaced_slots">
+									<option *ngFor="let unplaced of unplaced_slots" value="{{unplaced.slot_no}}"> {{unplaced.slot_no}} </option>
+								</ng-container>
+							</select>
+						</div>
+
+						<div class="form-group col-md-6">
+							<label><b>Placement</b></label>
+							<input type="text" class="form-control" name="unplaced_placement" [(ngModel)]="place_the_slot.placement">
+						</div>
+
+						<div class="form-group col-md-6">
+							<label><b>Position</b></label>
+							<select class="form-control" [(ngModel)]="place_the_slot.position" name="unplaced_position">
+									<option value="LEFT" selected>LEFT</option>
+									<option value="RIGHT">RIGHT</option>
+							</select>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary unplace_slot_form_close" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button type="submit" class="btn btn-primary placethisownslot"><i class="fa fa-check"></i> Place this slot</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- POPUP - SEND WALLET -->
+<div class="modal fade" id="popupSendWallet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<div class="member-subtitle">
+				Send Wallet
+			</div>
+			<form>
+				<div class="modal-body">
+					<div class="form-row">
+						<div class="form-group col-md-12">
+							<label><b>Source Wallet</b></label>
+							<select class="form-control form-control-sm">
+								<option>PHP Wallet</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6">
+							<label><b>Wallet Amount</b></label>
+							<input type="text" class="form-control form-control-sm enabled" value="PHP 100.00" disabled>
+						</div>
+						<div class="form-group col-md-6">
+							<label><b>Amount</b></label>
+							<input placeholder="PHP Transfer Amount" type="text" class="form-control form-control-sm" value="">
+						</div>
+						<div class="form-group col-md-12">
+							<label><b>PHP Wallet Address</b></label>
+							<input placeholder="Enter recipient PHP Wallet Address" type="text" class="form-control form-control-sm" value="">
+						</div>
+						<div class="form-group col-md-12">
+							<label><b>Reason</b></label>
+							<textarea class="form-control form-control-sm" placeholder="What is this for?"></textarea>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button data-dismiss="modal" type="button" class="btn btn-primary"><i class="fa fa-check"></i> Continue</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- POPUP - CONVERT WALLET -->
+<div class="modal fade" id="popupConvertWallet" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<form>
+				<div class="modal-body">
+					<div class="rate-conversion-container">
+						<div class="text-center"><div class="text-center rate-conversion margin-top">CURRENT RATE</div></div>
+						<div class="text-center primary-color"><b>BTC 1 ~ PHP 364,080</b></div>
+					</div>
+
+					<div class="form-row">
+						<label><b>You are converting from</b></label>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<select class="form-control form-control-sm">
+								<option>PHP</option>
+							</select>
+						</div>
+						<div class="form-group col-md-8">
+							<input type="text" class="form-control form-control-sm" value="100">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<label><b>You will receive</b></label>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<select class="form-control form-control-sm">
+								<option>BTC</option>
+							</select>
+						</div>
+						<div class="form-group col-md-8">
+							<input type="text" class="form-control form-control-sm" value="0.00004281">
+						</div>
+					</div>
+				</div>
+
+
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
+					<button data-dismiss="modal" type="button" class="btn btn-primary"><i class="fa fa-check"></i> Convert</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<!-- POPUP - QR CODE & ADDRESS -->
+<div class="modal fade" id="popupQRAdresss" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" *ngIf="data_focus">
+	<div class="modal-dialog modal-md" role="document">
+		<div class="modal-content">
+			<form>
+				<div class="modal-body p-4" *ngIf="!data_focus.wallet_id">
+					<h1 class="text-center">Loading</h1>
+				</div>
+				<div class="modal-body" *ngIf="data_focus.wallet_id">
+					<div class="member-subtitle">
+						{{ data_focus.currency_abbreviation }} Wallet Address
+					</div>
+					<div class="form-row text-center margin-top-10">
+						Share this address to receive money from your friends, or use it to transfer money from another bitcoin service.
+					</div>
+
+					<div class="text-center margin-top-10">
+						<input type="text" disabled class="enabled form-control form-control-sm text-center" value="{{ data_focus.wallet_address }}" name="">
+					</div>
+
+					<div class="text-center margin-top-10">
+						<img src="http://chart.apis.google.com/chart?cht=qr&chs=200x200&chl={{ data_focus.wallet_address }}&chld=H|0">
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

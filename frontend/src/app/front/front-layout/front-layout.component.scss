@@ -1,0 +1,63 @@
+@import "../../app.component";
+
+* 
+{
+    font-family: "Lato", sans-serif;
+}
+
+.header-container 
+{
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+
+    .navbar
+    {
+        background-color: #072939;
+
+        .navbar-brand 
+        {
+            margin-right: 40px;
+        }
+
+        .navbar-toggler 
+        {}
+
+        .navbar-toggler-icon 
+        {}
+
+        .navbar-nav 
+        {
+            .nav-item 
+            {
+                .nav-link 
+                {
+                    font-size: 14px;
+                    font-weight: $light;
+                    color: #a5abaf;
+                    letter-spacing: 1px;
+                }
+
+                .active 
+                {
+                    color: #fff;
+                }
+
+                .or-text 
+                {
+                    cursor: text;
+                }
+            }
+
+            .space 
+            {
+                margin-right: 20px;
+
+                @media screen and (max-width: 800px) 
+                {
+                    margin-right: 0;
+                }
+            }
+        }
+    }
+}

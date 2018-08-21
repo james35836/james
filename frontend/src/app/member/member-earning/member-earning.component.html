@@ -1,0 +1,508 @@
+<div class="member-subtitle">
+	Which earning would you like to check?
+</div>
+
+<div class="box-list-container">
+	<div class="box-list {{ active_complan == 'direct' ? 'active' : '' }}" (click)="changeActiveComplan('direct')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="icon"><i class="fa fa-handshake-o"></i></div>
+		<div class="label">Direct Referral</div>
+		<div class="charge" *ngIf="direct_log">UPT {{direct_log.total}}</div>
+	</div>
+	<div class="box-list {{ active_complan == 'indirect' ? 'active' : '' }}" (click)="changeActiveComplan('indirect')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="icon"><i class="fa fa-signing"></i></div>
+		<div class="label">Indirect Referral</div>
+		<div class="charge" *ngIf="indirect_log">UPT {{indirect_log.total}}</div>
+	</div>
+	<div class="box-list {{ active_complan == 'binary' ? 'active' : '' }}" (click)="changeActiveComplan('binary')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="icon"><i class="fa fa-sheqel"></i></div>
+		<div class="label">Binary</div>
+		<div class="charge" *ngIf="binary_log">UPT {{binary_log.total_running | number:'1.2-2'}}</div>
+	</div>
+	<div class="box-list {{ active_complan == 'unilevel' ? 'active' : '' }}" (click)="changeActiveComplan('unilevel')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+		<div class="label">Unilevel Repurchase</div>
+		<div class="charge">UPT 12,500.00</div>
+	</div>
+	<div class="box-list {{ active_complan == 'stairstep' ? 'active' : '' }}" (click)="changeActiveComplan('stairstep')">
+		<div class="active-cover"><i class="fa fa-check"></i></div>
+		<div class="icon"><i class="fa fa-level-up"></i></div>
+		<div class="label">Stairstep</div>
+		<div class="charge">UPT 5,000.00</div>
+	</div>
+</div>
+
+
+<!-- DIRECT REFERRAL VIEW -->
+<div class="tab-list {{ active_complan == 'direct' ? 'show' : '' }}">
+	<div class="member-subtitle">
+		Earnings Summary for Direct Referral
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th class="text-left">Date</th>
+								<th class="text-left">Time</th>
+								<th class="text-center">Trigger</th>
+								<th class="text-center">Owner</th>
+								<th class="text-center">Slot</th>
+								<th class="text-center">Membership</th>
+								<th class="text-right">Earning</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="direct_log">
+							<tr class="pointer" *ngFor="let log of direct_log.log">
+								<td class="text-left">{{log.earning_log_date_created}}</td>
+								<td class="text-left">{{log.earning_log_time_created}}</td>
+								<td class="text-center">{{log.earning_log_entry_type}}</td>
+								<td class="text-center">{{log.first_name}} {{log.last_name}}</td>
+								<td class="text-center">{{log.slot_no}}</td>
+								<td class="text-center">{{log.membership_name}}</td>
+								<td class="text-right">{{log.earning_log_amount | number:'1.2-2'}}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-left" colspan="6"></th>
+								<th class="text-right primary-color" *ngIf="direct_log">PHP {{direct_log.total}}</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- INDIRECT REFERRAL VIEW -->
+<div class="tab-list {{ active_complan == 'indirect' ? 'show' : '' }}">
+	<div class="member-subtitle">
+		Earnings Summary for Indirect Referral
+	</div>
+
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr data-target="#indirectPopup">
+								<th class="text-left">Level</th>
+								<th class="text-center">Number of Slot(s)</th>
+								<th class="text-center">Last Slot Creation</th>
+								<th class="text-right">Earning</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="indirect_log">
+							<tr class="pointer" *ngFor="let log of indirect_log.log">
+								<td class="text-left">{{log.level_name}}</td>
+								<td class="text-center">{{log.number_of_slots}}</td>
+								<td class="text-center">{{log.last_slot_creation}}</td>
+								<td class="text-right">{{log.earnings}}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-left" colspan="3"></th>
+								<th class="text-right primary-color" *ngIf="indirect_log">PHP {{indirect_log.total}}</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<!-- BINARY REFERRAL VIEW -->
+<div class="tab-list {{ active_complan == 'binary' ? 'show' : '' }}">
+	<div class="member-subtitle">
+		Earnings Summary for Binary Pairing
+	</div>
+
+	<div class="filter-box">
+		<div class="form-row clearfix">
+			<div class="col-md-2">
+				<div class="filter mb-2">
+					<select class="form-control form-control-sm">
+						<option>July</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-2">
+				<div class="filter mb-2">
+					<select class="form-control form-control-sm">
+						<option>2018</option>
+					</select>
+				</div>
+			</div>
+			<div class="col-md-3 offset-md-5">
+				<div class="filter mb-2">
+					<input type="text" class="form-control form-control-sm" placeholder="Search for slot..." name="">
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th class="text-left">Date</th>
+								<th class="text-left">Time</th>
+								<th class="text-center" width="100">Points<br>Left</th>
+								<th class="text-center" width="100">Points<br>Right</th>
+								<th class="text-center" width="100">Remain<br>Left</th>
+								<th class="text-center" width="100">Remain<br>Right</th>
+								<th class="text-center">Trigger</th>
+								<th class="text-center">Level Source</th>
+								<th class="text-center">Slot</th>
+								<th class="text-center">Flushout</th>
+								<th class="text-right">Earning</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="binary_log">
+							<tr class="pointer" *ngFor="let log of binary_log.log">
+								<td class="text-left">{{log.binary_log_date_created}}</td>
+								<td class="text-left">{{log.binary_log_time_created}}</td>
+								<td class="text-center">{{log.binary_old_left}} <span *ngIf="log.binary_receive_left != 0">+</span> <span class="primary-color bold" *ngIf="log.binary_receive_left != 0">{{log.binary_receive_left}}</span></td>
+								<td class="text-center">{{log.binary_old_right}} <span *ngIf="log.binary_receive_right != 0">+</span> <span class="primary-color bold" *ngIf="log.binary_receive_right != 0">{{log.binary_receive_right}}</span></td>
+								<td class="text-center">{{log.binary_new_left}}</td>
+								<td class="text-center">{{log.binary_new_right}}</td>
+								<td class="text-center">{{log.binary_points_trigger}}</td>
+								<td class="text-center">Level {{log.binary_cause_level}}</td>
+								<td class="text-center">{{log.cause_no}}</td>
+								<td class="text-center">{{log.binary_points_flushout | number: '1.2-2'}}</td>
+								<td class="text-center">{{log.binary_points_income | number: '1.2-2'}}</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-left" colspan="10"></th>
+								<th class="text-right primary-color" *ngIf="binary_log">UPT {{binary_log.total_running | number:'1.2-2'}}</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<!-- UNILEVEL REPURCHASE VIEW -->
+<div class="tab-list {{ active_complan == 'unilevel' ? 'show' : '' }}">
+	<div class="member-subtitle">
+		Points Summary for this Cutoff
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr data-target="#indirectPopup">
+								<th class="text-left">Level</th>
+								<th class="text-center">Number of Slot(s)</th>
+								<th class="text-center">Last Purchase</th>
+								<th class="text-right">Group PV</th>
+							</tr>
+						</thead>
+							<tbody *ngIf="unilevel_log">
+								<tr class="pointer" *ngFor="let log of unilevel_log.log">
+									<td class="text-left">{{log.level_name}}</td>
+									<td class="text-center">{{log.number_of_slots}}</td>
+									<td class="text-center">{{log.last_slot_creation}}</td>
+									<td class="text-right">{{log.earnings}}</td>
+								</tr>
+							</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-right" colspan="3">Total Group PV</th>
+								<th class="text-right" *ngIf="unilevel_log">{{unilevel_log.total_gpv}}</th>
+							</tr>
+							<tr>
+								<th class="text-right" colspan="3">Required Personal PV</th>
+								<th class="text-right">1,500.00</th>
+							</tr>
+							<tr>
+								<th class="text-right" colspan="3">Your Personal PV</th>
+								<th class="text-right" *ngIf="unilevel_log">{{unilevel_log.total_ppv}}</th>
+							</tr>
+							<tr *ngIf="unilevel_log">
+								<th class="text-right red" colspan="4" *ngIf="unilevel_log.passed == 0">You are not yet qualified to earn unilevel for this cutoff.</th>
+								<th class="text-right green" colspan="4" *ngIf="unilevel_log.passed == 1">You are qualified to earn unilevel for this cutoff.</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="member-subtitle">
+		Unilevel Earning History
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr data-target="#indirectPopup">
+								<th class="text-center">Date Start</th>
+								<th class="text-center">Date End</th>
+								<th class="text-center">Personal</th>
+								<th class="text-center">Required</th>	
+								<th class="text-center">Group PV</th>
+								<th class="text-center">Status</th>
+								<th class="text-right">Earnings</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="pointer">
+								<td class="text-center">09/28/2018</td>
+								<td class="text-center">10/28/2018</td>
+								<td class="text-center">100.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">12,500.00 Group PV</td>
+								<td class="text-center">Not Qualified</td>
+								<td class="text-right">0.00</td>
+							</tr>	
+							<tr class="pointer">
+								<td class="text-center">08/28/2018</td>
+								<td class="text-center">09/28/2018</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">11,500.00 Group PV</td>
+								<td class="text-center">Qualified</td>
+								<td class="text-right">11,500.00</td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">06/28/2018</td>
+								<td class="text-center">07/28/2018</td>
+								<td class="text-center">2,500.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">900.00 Group PV</td>
+								<td class="text-center">Qualified</td>
+								<td class="text-right">900.00</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-right" colspan="6"></th>
+								<th class="text-right primary-color">UPT 131,000.00</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- STAIRSTEP REFERRAL VIEW -->
+<div class="tab-list {{ active_complan == 'stairstep' ? 'show' : '' }}">
+
+	<div class="member-subtitle">
+		Points Summary for this Cutoff
+	</div>
+
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr data-target="#indirectPopup">
+								<th class="text-left">Owner</th>
+								<th class="text-left">Slot</th>
+								<th class="text-center">Date of Purchase</th>
+								<th class="text-center">Amount Purchase PV</th>
+								<th class="text-right">Override Points</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="stairstep_log">
+							<tr class="pointer" *ngFor="let log of stairstep_log.log">
+								<td class="text-left">{{log.first_name}} {{log.last_name}}</td>
+								<td class="text-left">{{log.slot_no}}</td>
+								<td class="text-center">{{log.stairstep_points_date_created}}</td>
+								<td class="text-center">{{log.stairstep_points_amount | number:'1.2-2'}}</td>
+								<td class="text-right">{{log.stairstep_override_points | number:'1.2-2'}}</td>
+							</tr>	
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-right" colspan="4">Total Override Points</th>
+								<th class="text-right" *ngIf="stairstep_log">{{stairstep_log.total_override_points | number:'1.2-2'}}</th>
+							</tr>
+							<tr>
+								<th class="text-right" colspan="4">Required Personal PV</th>
+								<th class="text-right" *ngIf="stairstep_log">{{stairstep_log.required_ppv | number:'1.2-2'}}</th>
+							</tr>
+							<tr>
+								<th class="text-right" colspan="4">Your Personal PV</th>
+								<th class="text-right" *ngIf="stairstep_log">{{stairstep_log.total_personal_pv | number:'1.2-2'}}</th>
+							</tr>
+							<tr *ngIf="stairstep_log">
+								<th class="text-right red" colspan="5" *ngIf="stairstep_log.passed == 0">You are not yet qualified to earn on stairstep for this cutoff.</th>
+								<th class="text-right green" colspan="5" *ngIf="stairstep_log.passed == 1">You are qualified to earn on stairstep for this cutoff.</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="member-subtitle">
+		Ranking Qualification Requirements
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr>
+								<th class="text-center">Rank</th>
+								<th class="text-center">Required Accumulated Personal PV</th>
+								<th class="text-center">Required Accumulated Group PV</th>
+								<th class="text-center">Status</th>
+							</tr>
+						</thead>
+						<tbody *ngIf="stairstep_log">
+							<tr class="pointer" *ngFor="let all_rank of stairstep_log.all_rank">
+								<td class="text-center">{{all_rank.stairstep_rank_name}}</td>
+								<td class="text-center">{{all_rank.all_ppv_percentage}}</td>
+								<td class="text-center">{{all_rank.all_gpv_percentage}}</td>
+								<td class="text-center green" *ngIf="all_rank.qualified == 1"><i class="fa fa-check"></i></td>
+								<td class="text-center" *ngIf="all_rank.qualified == 0"><i class="fa fa-close"></i></td>
+							</tr>
+	<!-- 						<tr class="pointer">
+								<td class="text-center">Crusader</td>
+								<td class="text-center">Qualified (100%)</td>
+								<td class="text-center">20 of 100 (20%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">Archon</td>
+								<td class="text-center">150 of 500 (30%)</td>
+								<td class="text-center">20 of 5,000 (0%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">Legend</td>
+								<td class="text-center">150 of 1,000 (1.5%)</td>
+								<td class="text-center">20 of 50,000 (0%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">Ancient</td>
+								<td class="text-center">150 of 5,000 (0%)</td>
+								<td class="text-center">20 of 500,000 (0%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">Divine</td>
+								<td class="text-center">150 of 10,000 (0%)</td>
+								<td class="text-center">20 of 1,000,000 (0%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">Immortal</td>
+								<td class="text-center">150 of 30,000 (0%)</td>
+								<td class="text-center">20 of 5,000,000 (0%)</td>
+								<td class="text-center"><i class="fa fa-close"></i></td>
+							</tr> -->
+						</tbody>
+						<tfoot>
+							<tr *ngIf="current_rank">
+								<td class="text-center" colspan="4" *ngIf="current_rank != 0">Your current rank is <span class="primary-color">{{current_rank}}</span></td>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="member-subtitle">
+		Stairstep Earning History
+	</div>
+
+	<div class="member-box push-top">
+		<div class="member-box-content">
+			<div class="code-vault-container">
+				<div class="table-responsive">
+					<table class="table table-sm">
+						<thead>
+							<tr data-target="#indirectPopup">
+								<th class="text-center">Date Start</th>
+								<th class="text-center">Date End</th>
+								<th class="text-center">Personal</th>
+								<th class="text-center">Required</th>	
+								<th class="text-center">Override Points</th>
+								<th class="text-center">Status</th>
+								<th class="text-right">Earnings</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr class="pointer">
+								<td class="text-center">09/28/2018</td>
+								<td class="text-center">10/28/2018</td>
+								<td class="text-center">100.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">12,500.00 Points</td>
+								<td class="text-center">Not Qualified</td>
+								<td class="text-right">0.00</td>
+							</tr>	
+							<tr class="pointer">
+								<td class="text-center">08/28/2018</td>
+								<td class="text-center">09/28/2018</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">11,500.00 Points</td>
+								<td class="text-center">Qualified</td>
+								<td class="text-right">11,500.00</td>
+							</tr>
+							<tr class="pointer">
+								<td class="text-center">06/28/2018</td>
+								<td class="text-center">07/28/2018</td>
+								<td class="text-center">2,500.00 Personal PV</td>
+								<td class="text-center">1,500.00 Personal PV</td>
+								<td class="text-center">900.00 Points</td>
+								<td class="text-center">Qualified</td>
+								<td class="text-right">900.00</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<th class="text-right" colspan="6"></th>
+								<th class="text-right primary-color">UPT 131,000.00</th>
+							</tr>
+						</tfoot>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

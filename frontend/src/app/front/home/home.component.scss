@@ -1,0 +1,78 @@
+@import "../../app.component";
+
+* 
+{
+    font-family: "Lato", sans-serif;
+}
+
+.content-text
+{
+	font-family: $ff3;
+	font-weight: $light;
+	color: #fff;
+	font-size: 14px;
+	text-align: center;
+}
+
+.caption-text-md
+{
+	@extend .content-text;
+	color: #41c3ac;
+	font-size: 18px;
+}
+
+.page-section
+{
+	padding: 50px 0 50px 0;
+
+	.holder-title
+	{
+		font-family: $ff3;
+		font-weight: $bold;
+		font-size: 17px;
+		color: #545454;
+	}
+}
+
+.section-header
+{
+	font-family: $ff3;
+	font-weight: $light;
+	font-size: 40px;
+	color: #082e40;
+}
+
+.s-home
+{
+	background-color: #082e40;
+	min-height: 100vh;
+	max-height: 100vh;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding-top: 90px;
+	
+	.caption-holder
+	{
+		padding: 30px 0 20px 0;
+
+		.banner-text
+		{
+			font-weight: $light;
+			font-size: 40px;
+			color: #fff;
+			text-align: center;
+		}	
+	}
+
+	.sub-caption
+	{
+		max-width: 70%;
+
+		@media screen and (max-width: 800px){
+			max-width: 100%;
+		}
+	}
+}
