@@ -117,28 +117,10 @@ Route::group(['middleware' => ['auth:api', 'member']], function()
 {
     Route::post('/test', 'Member\MemberController@test');
 
-
-    //MemberCodeController
-    Route::post('/get_codes', 'Member\MemberCodeController@get_member_codes');
-    Route::post('/get_claim_codes', 'Member\MemberCodeController@get_claim_codes');
-    //MemberProductController
-    Route::post('/member/get_all_products', 'Member\MemberProductController@get_all_products');
-    Route::post('/member/get_product', 'Member\MemberProductController@get_product');
-
     Route::post('/current_slot', 'Member\MemberController@current_slot');
     Route::post('/all_slot', 'Member\MemberController@all_slot');
 
     Route::post('/wallet_log', 'Member\MemberController@wallet_log');
-    Route::post('/earning/direct', 'Member\MemberEarningController@direct_earning');
-    Route::post('/earning/indirect', 'Member\MemberEarningController@indirect_earning');
-    Route::post('/earning/binary', 'Member\MemberEarningController@binary_earning');
-    Route::post('/earning/unilevel', 'Member\MemberEarningController@unilevel');
-    Route::post('/earning/stairstep', 'Member\MemberEarningController@stairstep');
-    Route::post('/cart/get_items', 'Member\MemberProductController@get_cart_items');
-
-    Route::post('/checkout', 'Member\MemberProductController@checkout');
-    Route::post('/get_branch', 'Member\MemberProductController@get_branch');
-
     Route::post('/slot/add_slot', 'Member\MemberController@add_slot');
     Route::post('/check_unplaced_slot', 'Member\MemberSlotController@get_unplaced_slot');
     Route::post('/check_unplaced_downline_slot', 'Member\MemberSlotController@get_unplaced_downline_slot');
@@ -147,8 +129,7 @@ Route::group(['middleware' => ['auth:api', 'member']], function()
     Route::post('/place_downline_slot', 'Member\MemberSlotController@place_downline_slot');
 
 
-    /* CASH IN */
-    Route::post('/cashin/record_cash_in', 'Member\MemberCashInController@record_cash_in');
+    
 
 });
 

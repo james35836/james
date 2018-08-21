@@ -53,17 +53,8 @@ import { CashierRoutesModule } from './cashier/cashier-routes/cashier-routes.mod
 import { CashierDashboardComponent } from './cashier/cashier-dashboard/cashier-dashboard.component';
 import { MemberLayoutComponent } from './member/member-layout/member-layout.component';
 import { MemberDashboardComponent } from './member/member-dashboard/member-dashboard.component';
-import { MemberCashoutComponent } from './member/member-cashout/member-cashout.component';
-import { MemberCashinComponent } from './member/member-cashin/member-cashin.component';
-import { MemberCodevaultComponent } from './member/member-codevault/member-codevault.component';
-import { MemberGenealogyComponent } from './member/member-genealogy/member-genealogy.component';
-import { MemberShoppingComponent } from './member/member-shopping/member-shopping.component';
-import { MemberEarningComponent } from './member/member-earning/member-earning.component';
-import { MemberShoppingProductComponent } from './member/member-shopping-product/member-shopping-product.component';
-import { MemberCheckoutComponent } from './member/member-checkout/member-checkout.component';
 import { MemberSlotComponent } from './member/member-slot/member-slot.component';
 import { MemberSettingsComponent } from './member/member-settings/member-settings.component';
-import { MemberOrderComponent } from './member/member-order/member-order.component';
 import { CashinComponent } from './admin/main/cashin/cashin.component';
 
 import { MemberRegisterComponent } from './member/member-register/member-register.component';
@@ -121,17 +112,10 @@ export function getAuthServiceConfigs() {
     CashierDashboardComponent,
     MemberLayoutComponent,
     MemberDashboardComponent,
-    MemberCashoutComponent,
-    MemberCashinComponent,
-    MemberCodevaultComponent,
-    MemberGenealogyComponent,
-    MemberShoppingComponent,
-    MemberEarningComponent,
-    MemberShoppingProductComponent,
-    MemberCheckoutComponent,
+  
     MemberSlotComponent,
     MemberSettingsComponent,
-    MemberOrderComponent,
+  
     CashinComponent,
     MemberRegisterComponent,
     MemberLoginComponent,
