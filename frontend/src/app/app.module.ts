@@ -20,15 +20,13 @@ import { MainRoutingModule } from './admin/main/main-routing/main-routing.module
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FrontLayoutComponent } from './front/front-layout/front-layout.component';
-import { CashierLayoutComponent } from './cashier/cashier-layout/cashier-layout.component';
 import { WizardLayoutComponent } from './admin/wizard/wizard-layout/wizard-layout.component';
 import { MainLayoutComponent } from './admin/main/main-layout/main-layout.component';
 
 import { HomeComponent } from './front/home/home.component';
-import { FeatureComponent } from './front/feature/feature.component';
-import { CompensationComponent } from './front/compensation/compensation.component';
-import { WorkComponent } from './front/work/work.component';
+
 import { ContactComponent } from './front/contact/contact.component';
+
 import { Step1Component } from './admin/wizard/step1/step1.component';
 import { Step2Component } from './admin/wizard/step2/step2.component';
 import { Step3Component } from './admin/wizard/step3/step3.component';
@@ -49,8 +47,6 @@ import { MarketingComponent } from './admin/main/marketing/marketing.component';
 import { DeveloperComponent } from './admin/main/developer/developer.component';
 import { ReportComponent } from './admin/main/report/report.component';
 import { Ng2GoogleChartsModule } from 'ng2-google-charts';
-import { CashierRoutesModule } from './cashier/cashier-routes/cashier-routes.module';
-import { CashierDashboardComponent } from './cashier/cashier-dashboard/cashier-dashboard.component';
 import { MemberLayoutComponent } from './member/member-layout/member-layout.component';
 import { MemberDashboardComponent } from './member/member-dashboard/member-dashboard.component';
 import { MemberSlotComponent } from './member/member-slot/member-slot.component';
@@ -63,6 +59,12 @@ import { MemberLoginComponent } from './member/member-login/member-login.compone
 //social
 import { SocialLoginModule, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider} from "angular-6-social-login";
 import { MemberInitializeComponent } from './member/member-initialize/member-initialize.component';
+import { AboutComponent } from './front/about/about.component';
+import { JobComponent } from './front/job/job.component';
+import { EventComponent } from './front/event/event.component';
+import { UserLoginComponent } from './front/user-login/user-login.component';
+import { MemberDirectoryComponent } from './member/member-directory/member-directory.component';
+import { MemberChatComponent } from './member/member-chat/member-chat.component';
 
 export function getAuthServiceConfigs() {
   let config = new AuthServiceConfig(
@@ -85,10 +87,12 @@ export function getAuthServiceConfigs() {
     AppComponent,
     FrontLayoutComponent,
     HomeComponent,
-    FeatureComponent,
-    CompensationComponent,
-    WorkComponent,
+    AboutComponent,
+    JobComponent,
+    EventComponent,
+
     ContactComponent,
+
     Step1Component,
     Step2Component,
     Step3Component,
@@ -99,7 +103,6 @@ export function getAuthServiceConfigs() {
     MemberComponent,
     WizardLayoutComponent,
     MainLayoutComponent,
-    CashierLayoutComponent,
     TestComponent,
     LoginComponent,
     ProductComponent,
@@ -109,7 +112,6 @@ export function getAuthServiceConfigs() {
     MarketingComponent,
     DeveloperComponent,
     ReportComponent,
-    CashierDashboardComponent,
     MemberLayoutComponent,
     MemberDashboardComponent,
   
@@ -119,7 +121,11 @@ export function getAuthServiceConfigs() {
     CashinComponent,
     MemberRegisterComponent,
     MemberLoginComponent,
-    MemberInitializeComponent
+    MemberInitializeComponent,
+    UserLoginComponent,
+    MemberDirectoryComponent,
+    MemberChatComponent
+    
   ],
   imports: [
     HttpClientModule,
@@ -129,7 +135,6 @@ export function getAuthServiceConfigs() {
     WizardRoutingModule,
     AngularFontAwesomeModule,
     MainRoutingModule,
-    CashierRoutesModule,
     MemberRoutesModule,
     FormsModule,
     Ng2GoogleChartsModule,

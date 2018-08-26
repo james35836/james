@@ -44,6 +44,5 @@ export class MemberSlotComponent implements OnInit {
   {
   	localStorage.setItem("slot_id", slot_id);
   	this.current_slot_id = slot_id;
-  	this.layout.get_current_slot();
   }
 }

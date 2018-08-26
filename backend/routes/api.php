@@ -3,6 +3,7 @@
 Route::group(['middleware' => ['auth:api']], function() 
 {
     // ONLY MEMBER AND ADMIN ACCOUNT ALLOWED
+
 	Route::get('/user_data', 'Admin\AdminController@user_data');
     Route::post('/image/upload', 'Member\MemberController@upload_image');
     Route::post('/service/charge', 'Member\MemberController@get_service_charge');
@@ -115,21 +116,9 @@ Route::group(['middleware' => ['auth:api', 'admin']], function()
 
 Route::group(['middleware' => ['auth:api', 'member']], function() 
 {
-    Route::post('/test', 'Member\MemberController@test');
-
-    Route::post('/current_slot', 'Member\MemberController@current_slot');
-    Route::post('/all_slot', 'Member\MemberController@all_slot');
-
-    Route::post('/wallet_log', 'Member\MemberController@wallet_log');
-    Route::post('/slot/add_slot', 'Member\MemberController@add_slot');
-    Route::post('/check_unplaced_slot', 'Member\MemberSlotController@get_unplaced_slot');
-    Route::post('/check_unplaced_downline_slot', 'Member\MemberSlotController@get_unplaced_downline_slot');
-    Route::post('/current_slot', 'Member\MemberController@current_slot');
-    Route::post('/place_own_slot', 'Member\MemberSlotController@place_own_slot');
-    Route::post('/place_downline_slot', 'Member\MemberSlotController@place_downline_slot');
-
-
     
+    Route::post('/messages', 'Member\MemberController@messages');
+    Route::post('/messages_submit', 'Member\MemberController@message_submit'); 
 
 });
 

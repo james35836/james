@@ -18,13 +18,8 @@ export class MemberLayoutComponent implements OnInit
 	type						= localStorage.getItem('type');
 	user    					= null;
 	headers 					= null;
-	cart_items : any 			= [];
-	show_cart : any 			= [];
-	cart_item_qty : any 		= [];
-	total 						= null;
-	cart_count 					= null;
-	current_slot 				= null;
-	wallet 						= "0.00";
+	messages              : any = null;
+	send_message                = {};
 	initialize_loading_message 	= "Initializing...";
 
 
@@ -54,6 +49,20 @@ export class MemberLayoutComponent implements OnInit
 		this.sideNav();
 		this.sideNavOn();
 		this.sideNavOff();
+		
+	}
+
+	chat_box()
+	{
+	  	$(".chat-body").slideToggle( "slow");
+	  	if ($(".chat-option").find('i').hasClass('fa-plus'))
+	    {		
+	      	$(".chat-option").find('i').removeClass('fa-plus').addClass('fa-minus');	
+	    }
+		else 
+	    {		
+	        $(".chat-option").find('i').removeClass('fa-minus').addClass('fa-plus');	
+	    }
 	}
 
 	sideNav(): void
@@ -119,49 +128,9 @@ export class MemberLayoutComponent implements OnInit
 		});
 	}
 
-	get_cart(item_id)
-	{
-		this.cart_items.push(item_id)
+	
 
-		let cart_object = {...this.cart_items};
-
-		this.http.post(this.rest.domain + "/api/cart/get_items", 
-		{ 
-			items : cart_object
-		}, 
-		{
-			headers: this.headers
-		})
-		.subscribe(response =>
-		{	
-			this.show_cart = response;
-			this.get_total();
-			this.get_cart_count();
-		},
-		error => 
-		{
-			console.log(error);
-		});
-	}
-
-	get_total()
-	{
-		let sum = 0;
-		for( let items of this.show_cart)
-		{
-			
-			sum = sum + (items.item_price * items.item_qty);
-			
-		}
-
-		this.total = sum;
-	}
-
-	get_cart_count()
-	{
-		this.cart_count = this.show_cart.length;
-	}
-
+	
 	hideDropdown()
 	{
 		$(".dropdown").addClass("hidden");
@@ -172,11 +141,7 @@ export class MemberLayoutComponent implements OnInit
 		}, 500);
 	}
 
-	checkout()
-	{
-		localStorage.setItem('checkout_items', JSON.stringify(this.show_cart));
-		this.router.navigate(['/member/checkout']);
-	}
+	
 
 	makeid() 
 	{
@@ -191,6 +156,7 @@ export class MemberLayoutComponent implements OnInit
 
 	getUserData(accessToken: string) 
 	{
+		this.initialize_loading_message = "Loading Information";
 	    this.userService.getUserData(accessToken)
         .subscribe(user_data => 
         {
@@ -199,6 +165,7 @@ export class MemberLayoutComponent implements OnInit
             var id_length = id.toString().length;
             localStorage.setItem('identification', this.makeid()+this.user.id);
             localStorage.setItem('id', id_length);
+            this.router.navigate(['/member/dashboard']);
         },
         error =>
         {
@@ -208,32 +175,42 @@ export class MemberLayoutComponent implements OnInit
 			this.router.navigate(['/admin/login']);
         });
 
-       	this.get_current_slot();
-	}
+    }
 
-	get_current_slot()
-	{
-		this.initialize_loading_message = "Loading Slot Information";
-
-		this.http.post(this.rest.domain + "/api/current_slot", { slot_id : localStorage.getItem("slot_id") }, 
+    load_message()
+    {
+    	this.http.post(this.rest.domain + "/api/messages", {}, 
 		{
-			headers: this.headers	
+			headers: this.headers
 		})
 		.subscribe(response =>
-		{	
-			this.current_slot = response;
-
-			if(this.current_slot)
-			{
-			    localStorage.setItem("slot_id", this.current_slot.slot_id);
-				this.wallet = this.current_slot.get_wallets;
-			}
-
-			this.router.navigate(['/member/dashboard']);
-		},
-		error => 
 		{
-			console.log(error);
+			this.messages = response;
+		},
+		error =>
+		{
+			console.log(error,"dsad");
 		});
-	}
+    }
+    onSubmitMessage()
+    {
+
+    	this.http.post(this.rest.domain + "/api/messages_submit", this.send_message, 
+		{
+			headers: this.headers
+		})
+		.subscribe(response =>
+		{
+			$('#message').val("");
+			$(".chat-body-content").stop().animate({ scrollTop: $(".chat-body-content")[0].scrollHeight}, 1000);
+			this.load_message();
+		},
+		error =>
+		{
+			console.log(error,"dsad");
+		});
+    }
+
+
+	
 }

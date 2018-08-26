@@ -1,6 +1,5 @@
 <div class="member-layout">
 	<div id="overlay" (click)="sideNavOff()"></div>
-
 	<div class="side-nav">
 		<nav class="pushmenu pushmenu-left">
 			<a href="javascript:">
@@ -19,44 +18,35 @@
 				</div>
 			</a>
 			<ul class="links">
-				<li>
-					<a (click)="sideNavOff()" routerLink="/member/dashboard" routerLinkActive="active">
-						<i class="fa fa-credit-card"></i> My Wallet</a>
-				</li>
+				
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/cash-in" routerLinkActive="active">
-						<i class="fa fa-bank"></i> Cash In</a>
+					<i class="fa fa-bank"></i> Cash In</a>
 				</li>
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/cash-out" routerLinkActive="active">
-						<i class="fa fa-money"></i> Cash Out</a>
+					<i class="fa fa-money"></i> Cash Out</a>
 				</li>
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/codevault" routerLinkActive="active">
-						<i class="fa fa-key"></i> Code Vault</a>
+					<i class="fa fa-key"></i> Code Vault</a>
 				</li>
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/earning" routerLinkActive="active">
-						<i class="fa fa-credit-card"></i> Earnings</a>
+					<i class="fa fa-credit-card"></i> Earnings</a>
 				</li>
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/genealogy" routerLinkActive="active">
-						<i class="fa fa-cubes"></i> My Network</a>
+					<i class="fa fa-cubes"></i> My Network</a>
 				</li>
 				<li>
 					<a (click)="sideNavOff()" routerLink="/member/shopping" routerLinkActive="active">
-						<i class="fa fa-shopping-bag"></i> Shopping</a>
+					<i class="fa fa-shopping-bag"></i> Shopping</a>
 				</li>
 			</ul>
 			<ul class="links pt-3">
 				<li>
-					<a (click)="sideNavOff()" routerLink="/member/order">My Orders</a>
-				</li>
-				<li>
 					<a (click)="sideNavOff()" routerLink="/member/settings">Account Settings</a>
-				</li>
-				<li>
-					<a (click)="sideNavOff()" routerLink="/member/slot">Switch Slot</a>
 				</li>
 				<li>
 					<a (click)="onLogout()">Logout</a>
@@ -64,7 +54,6 @@
 			</ul>
 		</nav>
 	</div>
-
 	<div class="header py-2">
 		<div class="container">
 			<div class="header-wrapper">
@@ -73,24 +62,24 @@
 						<i class="fa fa-bars hamburger"></i>
 					</div>
 					<div class="company-logo">
-						<i class="fa fa-themeisle"></i>
+						<i class="fa fa-plus"></i>
 					</div>
-					<div class="company-name">Orabella</div>
+					<div class="company-name">James</div>
 				</div>
 				<div class="search-box">
-					<div class="search-input">
-						<input placeholder="Search for product, slot code or name..." type="text" name="">
-					</div>
-					<div class="search-icon">
-						<i class="fa fa-search"></i>
-					</div>
+					
 				</div>
-				<div class="notification-box">
-					<div class="notification" data-toggle="modal" data-target="#cartPopup">
-						<i class="fa fa-shopping-cart"></i>
-						<span class="label">CART</span>
-						<div class="count-cart">{{cart_count == null ? '0' : cart_count}}</div>
-					</div>
+				<div class="mobile-list">
+					<ul class="list-inline d-none">
+						
+						<li class="list-inline-item">
+							<i class="fa fa-bell" aria-hidden="true"></i>
+						</li>
+						<li class="list-inline-item">
+							<i class="fa fa-envelope" aria-hidden="true"></i>
+						</li>
+						
+					</ul>
 				</div>
 				<div class="name-container">
 					<div class="name" *ngIf="user">{{ user.name }}</div>
@@ -99,9 +88,7 @@
 					</div>
 					<div class="dropdown">
 						<div class="dropdown-container">
-							<div (click)="hideDropdown()" routerLink="/member/order" class="menu">My Orders</div>
 							<div (click)="hideDropdown()" routerLink="/member/settings" class="menu">Account Settings</div>
-							<div (click)="hideDropdown()" routerLink="/member/slot" class="menu">Switch Slot</div>
 							<div (click)="onLogout()" class="menu top-divide">Logout</div>
 						</div>
 					</div>
@@ -109,53 +96,122 @@
 			</div>
 		</div>
 	</div>
+	
+	<div class="container-fluid">
+		<div class="page-content">
+			<nav class="col-md-3 d-none d-md-block bg-light sidebar">
+				<div class="sidebar-sticky">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-item-link active" [routerLink]="['/member/dashboard']" href="javascript:void(0)"><i class="fa fa-bank"></i>DASHBOARD</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>NEWS FEED</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>ANNOUNCEMENT</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>ALUMNI EVENTS</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>ALUMNI NEARBY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/member/directory']" href="javascript:void(0)"><i class="fa fa-bank"></i>DIRECTORY</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/member/chat']" href="javascript:void(0)"><i class="fa fa-bank"></i>GROUP CHAT</a>
+						</li>
+						
+					</ul>
+					<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+					<span>MAINTENANCE</span>
+					<a class="d-flex align-items-center text-muted" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>
+					</a>
+					</h6>
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>USER</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>ANNOUNCEMENT</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>EVENTS</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-item-link" [routerLink]="['/home']" href="javascript:void(0)"><i class="fa fa-bank"></i>JOBS</a>
+						</li>
+						
 
-	<div class="navigation">
-		<a class="nav" routerLink="/member/dashboard" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-credit-card"></i></div>
-			<div class="nav-label">My Wallet</div>
-		</a>
-		<a class="nav" routerLink="/member/cash-in" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-bank"></i></div>
-			<div class="nav-label">Cash In</div>
-		</a>
-		<a class="nav" routerLink="/member/cash-out" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-money"></i></div>
-			<div class="nav-label">Cash Out</div>
-		</a>
-		<a class="nav" routerLink="/member/codevault" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-key"></i></div>
-			<div class="nav-label">Code Vault</div>
-		</a>
-		<a class="nav" routerLink="/member/earning" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-credit-card"></i></div>
-			<div class="nav-label">Earnings</div>
-		</a>
-		<a class="nav" routerLink="/member/genealogy" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-cubes"></i></div>
-			<div class="nav-label">My Network</div>
-		</a>
-		<a class="nav" routerLink="/member/shopping" routerLinkActive="active">
-			<div class="nav-icon"><i class="fa fa-shopping-bag"></i></div>
-			<div class="nav-label">Shopping</div>
-		</a>
+
+
+					</ul>
+				</div>
+			</nav>
+			<main role="main" class="col-md-9 ml-sm-auto  pt-3 px-4">
+				<router-outlet></router-outlet>
+				<div class="chat-panel">
+					<div class="col-sm-12">
+						<div id="chat-content" class="chat-content" style="">
+							<div class="chat-header">
+								<div class="chat-title">
+									<span class="glyphicon glyphicon-heart-empty pulse"></span>  Chat Message
+								</div>
+								<div class="chat-option">
+									
+									<a (click)="chat_box()"><i class="fa fa-minus"></i></a>
+									
+								</div>
+								<br clear="all">
+							</div>
+							<div class="chat-body">
+								<div class="chat-body-content">
+									<div class="message" *ngIf="messages">
+										<ul >
+											
+											<li *ngFor="let data of messages;" class="{{data.sender_id == user.id ? 'me' : 'him' }}">{{data.sender_id}}{{user.id}}{{data.message}}</li>
+											
+										</ul>
+									</div>
+									
+									<p style="padding-top: 50px;color:#3333;text-align: center;">NO MESSAGE</p>
+									
+								</div>
+								<div class="chat-input">
+									<form class="form-message" (ngSubmit)="onSubmitMessage()" #signInForm="ngForm">
+										<div class="input-group mb-3">
+											<textarea name="message" id="message" [(ngModel)]="send_message.message" class="form-control"  cols="30" rows="10"></textarea>
+									    
+									    <div class="input-group-append">
+									    	<button type="submit" class="btn btn-default"><i class="fa fa-paper-plane"></i>SEND</button>
+									    </div>
+									  </div>
+									</form>
+								</div>
+							</div>
+
+
+
+
+						</div>
+							
+					</div>
+				</div>
+			</main>
+		</div>
 	</div>
-
-	<div class="main-content">
-		<router-outlet></router-outlet>
-	</div>
-
 	<div class="footer">
 		<div class="clearfix">
 			<div class="row">
-				<div class="col-md-3 text-left"><div class="copyright">&copy; 2018 Orabella.net</div></div>
+				<div class="col-md-3 text-left"><div class="copyright">&copy; 2018 james Omosora</div></div>
 				<div class="col-md-6 text-center">
 					<div class="footer-nav">
 						<a class="nav" href="">About</a> <span class="divider">&#8226;</span>
-						<a class="nav" href="">Careers</a> <span class="divider">&#8226;</span>
+						<a class="nav" href="">Carrers</a> <span class="divider">&#8226;</span>
 						<a class="nav" href="">Tems</a> <span class="divider">&#8226;</span>
 						<a class="nav" href="">Privacy</a> <span class="divider">&#8226;</span>
-						<a class="nav" href="">AML Policy</a> <span class="divider">&#8226;</span>
 						<a class="nav" href="">Press</a>
 					</div>
 				</div>
@@ -167,60 +223,6 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
-</div>
-
-<!-- POPUP - CART -->
-<div class="modal fade" id="cartPopup" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog modal-lg" role="document">
-		<div class="modal-content">
-			<form>
-				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel"><i class="fa fa-shopping-cart"></i> Cart</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="cart-container">
-						<div class="table-responsive">
-							<table class="table table-sm">
-								<thead>
-									<tr>
-										<th class="text-center">Image</th>
-										<th class="text-center">Product Name</th>
-										<th class="text-center">Unit Price</th>
-										<th class="text-center" width="100px">Quantity</th>
-										<th class="text-right">Total</th>
-									</tr>
-								</thead>
-								<tbody *ngIf="show_cart">
-									<tr *ngFor="let items of show_cart; let i = index;">
-										<td class="text-center"><img src="//ph-test-11.slatic.net/p/fastcute-brand-cycling-jersey-short-sleeve-quick-dry-shirt-comfortable-breathable-3d-cushion-tights-sportswear-fcs-0406-9052-9850888-0f22ce5156264da048f4682f9563920c-catalog.jpg_200x200q80.jpg_.webp"></td>
-										<td class="text-center">{{items.item_sku}}</td>
-										<td class="text-center">{{items.item_price | number:'1.2-2'}}</td>
-										<td class="text-center"><input class="form-control form-control-sm text-center" type="number" (keyup)="get_total()" [(ngModel)]="show_cart[i].item_qty" [ngModelOptions]="{standalone: true}" ></td>
-										<td class="text-right"><b>PHP {{items.item_price * show_cart[i].item_qty | number:'1.2-2'}}</b></td>
-									</tr>
-									
-								</tbody>
-								<tfoot>
-									<tr>
-										<th class="text-right" colspan="4">Grand Total</th>
-										<th class="text-right shopping-color">PHP {{total | number:'1.2-2'}}</th>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-					</div>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary shopping-secondary"  data-dismiss="modal"><i class="fa fa-close"></i> Close</button>
-					<button type="button" data-dismiss="modal" class="btn btn-primary shopping-primary" (click)="checkout()" ><i class="fa fa-check"></i> Checkout</button>
-				</div>
-			</form>
 		</div>
 	</div>
 </div>

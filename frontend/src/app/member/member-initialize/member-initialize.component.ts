@@ -36,5 +36,6 @@ export class MemberInitializeComponent implements OnInit
         });
 
 	    this.layout.getUserData(this.layout.auth);
+	    this.layout.load_message();
 	}
 }

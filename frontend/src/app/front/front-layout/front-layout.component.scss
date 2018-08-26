@@ -1,63 +1,34 @@
 @import "../../app.component";
 
+
 * 
 {
     font-family: "Lato", sans-serif;
 }
-
-.header-container 
+nav
 {
-    position: fixed;
-    width: 100%;
-    z-index: 99;
+    background-color: #007bff !important;
+}
+.nav-link
+{
+    color: #fff !important;
+    font-weight: bold;
+    font-size: 17px;
+}
 
-    .navbar
-    {
-        background-color: #072939;
 
-        .navbar-brand 
-        {
-            margin-right: 40px;
-        }
+.nav-link:hover
+{
+    color: #fff !important;
+    font-weight: bold !important;
+    background-color: #77b8fd !important;
+}
 
-        .navbar-toggler 
-        {}
-
-        .navbar-toggler-icon 
-        {}
-
-        .navbar-nav 
-        {
-            .nav-item 
-            {
-                .nav-link 
-                {
-                    font-size: 14px;
-                    font-weight: $light;
-                    color: #a5abaf;
-                    letter-spacing: 1px;
-                }
-
-                .active 
-                {
-                    color: #fff;
-                }
-
-                .or-text 
-                {
-                    cursor: text;
-                }
-            }
-
-            .space 
-            {
-                margin-right: 20px;
-
-                @media screen and (max-width: 800px) 
-                {
-                    margin-right: 0;
-                }
-            }
-        }
-    }
+footer
+{
+    color: #ffff !important;
+}
+footer ul li.list-unstyled a
+{
+    clolor: red !important;
 }

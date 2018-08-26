@@ -27,33 +27,13 @@ class AdminController extends Controller
 
     public function user_data()
     {
-        if(isset(Request::user()->id))
-        {
-        	if(Request::user()->type == "member")
-    		{	
-              $check_has_slot = Tbl_slot::where("slot_owner",Request::user()->id)->first();
-              if(!$check_has_slot)
-              {
-                  Slot::create_blank_slot(Request::user()->id);
-              }
-    		}	
-        }
+        
     	return Request::user();
     }
 
-    public function get_membership()
-	{
-		$membership = Membership::get();
+    
 
-		return response()->json($membership, 200);
-	}
-
-	public function get_product()
-	{
-		$item = Item::get_product();
-
-		return response()->json($item, 200);
-	}
+	
 
   
 }

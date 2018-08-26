@@ -6,6 +6,9 @@ import { MemberDashboardComponent } from '../member-dashboard/member-dashboard.c
 import { MemberSlotComponent } from '../member-slot/member-slot.component';
 import { MemberSettingsComponent } from '../member-settings/member-settings.component';
 import { MemberLoginComponent } from '../member-login/member-login.component';
+import { MemberDirectoryComponent } from '../member-directory/member-directory.component';
+
+import { MemberChatComponent } from '../member-chat/member-chat.component';
 import { MemberRegisterComponent } from '../member-register/member-register.component';
 import { MemberInitializeComponent } from '../member-initialize/member-initialize.component';
 
@@ -20,6 +23,8 @@ const routes: Routes = [
     { path: 'member/slot', component: MemberSlotComponent },
     { path: 'member/settings', component: MemberSettingsComponent },
  
+    { path: 'member/directory', component: MemberDirectoryComponent },
+    { path: 'member/chat', component: MemberChatComponent },
     { path: 'member/initialize', component: MemberInitializeComponent },
   ]},
   { path: 'member/login', component: MemberLoginComponent },
