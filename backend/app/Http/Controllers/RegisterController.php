@@ -8,11 +8,7 @@ use Carbon\Carbon;
 use Request;
 class RegisterController extends Controller
 {
-    public function get_country()
-    {
-        $response = Country::get();
-        return response()->json($response, 200);
-    }
+    
 
     public function new_register()
     {

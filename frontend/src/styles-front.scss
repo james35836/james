@@ -1,0 +1,225 @@
+
+
+.btn-front
+{
+    text-decoration: none;
+    color: #0495d6 !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    display: inline-block;
+    border: 2px solid #0495d6;
+    background: #ffffff;
+}
+.btn-customize
+{
+    text-decoration: none !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    display: inline-block;
+    border: 2px solid #ffffff;
+    background: #0495d6;
+    color: #fff;
+}
+.btn-primary-custom
+{
+    text-decoration: none !important;
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: 4px;
+    vertical-align: middle;
+    display: inline-block;
+    border: 2px solid #0495d6;
+    background: #ffffff;
+    color: #0495d6;
+}
+
+
+
+.front-layout
+{
+
+    $displayFont: 'Raleway', sans-serif;
+    $contentFont: 'Lato', sans-serif;
+    
+
+    @media screen and (max-width: 800px) 
+    {
+        .scrolled
+        {
+            display:none;
+        }
+        .navbar-brand
+        {
+            margin-left:10px;
+        }
+        .navbar-toggler
+        {
+            margin-right: 10px;
+            border: 2px solid #fff;
+            span
+            {
+                font-size: 28px;
+                text-align: center;
+                color: #fff;
+            }
+        }
+    }
+    color: #222;
+
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.3;
+    overflow-x: hidden !important;
+    .scrolled
+    {
+        background: #fff;
+    
+        left: 0;
+        padding: 0;
+        position: fixed;
+        top: -100px;
+        transform: translateY(100px);
+        // transition: transform .5s;
+        width: 100%;
+        box-shadow: 0 0 20px -10px #000;
+        a
+        {
+            
+            font-size: 13px;
+            font-weight: 500;
+            letter-spacing: 1px;
+            margin: 15px 5px;
+            transition: all .4s;
+            padding-right: .5rem;
+            padding-left: .5rem;
+        }
+        .nav-link
+        {
+            color: #222  !important;
+        }
+        .btn-customize
+        {
+            text-decoration: none;
+            color: #0495d6  !important;
+            padding-top: .5rem;
+            padding-bottom: .5rem;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            border-radius: 4px;
+            vertical-align: middle;
+            display: inline-block;
+            border: 2px solid #0495d6;
+            background: #ffffff;
+        }
+    }
+    nav
+    {
+        padding:0px;
+        background: #0495d6;
+        left: 0;
+        min-height: 70px;
+        top: 0;
+        width: 100%;
+        z-index: 9;
+        font-family:$displayFont;
+        a
+        {
+            color: #fff;
+        }
+        .navbar-nav
+        {
+            li
+            {
+                padding: 5px 15px 0px 15px;
+                a
+                {
+                    color: #fff;
+                    font-size: 13px;
+                    opacity: 1.0;
+                    font-weight: 300;
+                    padding-right: .5rem;
+                    padding-left: .5rem;
+                }
+                &:hover.link
+                {
+                    opacity: 0.8;
+                    background: #e6e9e2;
+
+                    a
+                    {
+                        opacity: 1 !important; 
+                        color:#0495d6 !important;
+                    }
+                } 
+            }
+            
+            
+        }
+        
+    }
+
+    main.main-front
+    {
+        min-height:580px;
+        margin-top: 70px;
+        padding-bottom:none;
+        background:#f4f4f4;
+        font-family:$contentFont;
+        .page-container
+        {
+            cursor:pointer;
+            padding: 40px; 
+            min-height: 580px;
+            .page-title
+            {
+                margin-bottom:50px;
+                line-height: 1;
+                font-weight: 600; 
+                text-align: center;
+            }
+            .section-title 
+            { 
+                margin-bottom: 60px; 
+            }
+        }
+
+        
+
+    }
+
+    footer
+    {
+        position: absolute;
+
+ // bottom: 0;
+ width: 100%;
+        background-color: #0495d6;
+        color: #eee;
+        padding: 50px 0 0;
+        font-family:$displayFont;
+        .social-link
+        {
+            color: #f7f8fb  !important;
+        }
+        p
+        {
+            color: #f7f8fb  !important;
+        }
+        .social-buttons
+        {
+            color: #f7f8fb  !important;
+            font-size:30px;
+        }
+    }
+
+}

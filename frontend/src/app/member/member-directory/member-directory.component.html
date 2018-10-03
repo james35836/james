@@ -1,292 +1,146 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-	<h5 >Directory</h5>
-	<div class="btn-toolbar mb-2 mb-md-0">
-		<div class="btn-group mr-2">
-			<button class="btn btn-sm btn-outline-secondary">Share</button>
-			<button class="btn btn-sm btn-outline-secondary">Export</button>
-		</div>
-		<button class="btn btn-sm btn-outline-secondary dropdown-toggle"><i class="fa fa-bank"></i>This week</button>
-	</div>
-</div>
-<div class="row">
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-						</div>
-					</div>
+<div class="container">
+	<div class="row">
+		<!-- dashboard header -->
+		<div class="col-md-12">
+			<div class="page-header clearfix mt15 mb20">
+				<div class="left">
+					<h4 class=" text-header">DIRECTORY</h4>
 				</div>
-				<div class="backside">
+				
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="row clearfix page-content-header">
+			<div class="col-md-3">
+				<select name="" id="" class="form-control">
+					<option value="">fhgh</option>
+					<option value="">hfgh</option>
+					<option value="">fghfgh</option>
+					<option value="">hfgh</option>
+					<option value="">fgh</option>
+				</select>
+			</div>
+			<div class="col-md-3 offset-md-6">
+				<div class="input-group">
+					<input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+					<span class="input-group-append">
+						<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+					</span>
+				</div>
+			</div>
+		</div>
+		<span *ngIf = "enabled=='list'">
+			<div *ngIf="member_list" class="row clearfix">
+				<div *ngFor="let data of member_list;let i= index;" class="col-lg-3 col-md-6 col-xs-12 col-sm-6">
 					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
+						<div class="box" (click)="memeber_details(i)">
+							<div class="img">
+								<img src="{{data.profile}}">
+							</div>
+							<h2>{{data.name}}<br><span>{{data.user_job}}</span></h2>
+							<p>{{data.user_bio}}</p>
+							<span>
+								<ul>
+									<li><a href="{{data.user_job}}"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li>
+									<li><a href="{{data.user_job}}"><i class="fab fa-twitter" aria-hidden="true"></i></a></li>
+									<li><a href="{{data.user_job}}"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li>
+								</ul>
+							</span>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+		</span>
+		<span *ngIf = "enabled=='details'">
+			<div *ngIf="member_details" class="container profile-details">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="profile-img">
+							<img src="{{member_details.profile}}" alt="">
 						</div>
 					</div>
-				</div>
-				<div class="backside">
-					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
+					<div class="col-md-6">
+						<div class="profile-head">
+							<h5>{{member_details.name}}</h5>
+							<h6>{{member_details.user_job}}</h6>
+							<button *ngIf="connection_status==0" type="button" class="  btn-submit"><i class="fas fa-user-plus pr-1" (click) ="connect_now(member_details.id,'connect')"></i> CONNECT</button>
+							<button *ngIf="connection_status==1" type="button" class="  btn-submit"><i class="fas fa-user-plus pr-1" (click) ="connect_now(member_details.id,'unconnect')"></i> REQUEST SENT</button>
+							<button *ngIf="connection_status==2" type="button" class="  btn-submit"><i class="fas fa-user-plus pr-1" (click) ="connect_now(member_details.id,'unconnect')"></i> CONNECTED</button>
+							<p class="proile-rating">RANKINGS : <span>8/10</span></p>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-						</div>
+					<div class="col-md-2">
+						<button class="profile-edit-btn" (click)="go_to('list')">BACK</button>
 					</div>
 				</div>
-				<div class="backside">
-					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="social-icon-s">
+							<i class="fab fa-facebook-f fa-2x"></i>
+							<i class="fab fa-twitter fa-3x"></i>
+							<i class="fab fa-linkedin-in fa-2x"></i>
 						</div>
 					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- ./Team member -->
-	<!-- Team member -->
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="backside">
-					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
+					<div class="col-md-8">
+						<div class="tab-content profile-tab" id="myTabContent">
+							<div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+								<div class="row border-line">
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>First Name</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.first_name}}</p>
+									</div>
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>Last Name</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.last_name}}</p>
+									</div>
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>Email</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.email}}</p>
+									</div>
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>Phone</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.user_phone_1}}</p>
+									</div>
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>Profession</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.user_job}}</p>
+									</div>
+								</div>
+								<div class="row border-line">
+									<div class="col-md-4">
+										<label>Bio</label>
+									</div>
+									<div class="col-md-6">
+										<p>{{member_details.user_bio}}</p>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
+		</span>
 	</div>
-	<!-- ./Team member -->
-	<!-- Team member -->
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="backside">
-					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="col-xs-12 col-sm-6 col-md-4">
-		<div class="image-flip" ontouchstart="this.classList.toggle('hover');">
-			<div class="mainflip">
-				<div class="frontside">
-					<div class="card">
-						<div class="card-body text-center">
-							<p><img class=" img-fluid" src="http://www.hyperlinkcode.com/images/sample-image.jpg" alt="card image"></p>
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.</p>
-							<a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
-						</div>
-					</div>
-				</div>
-				<div class="backside">
-					<div class="card">
-						<div class="card-body text-center mt-4">
-							<h4 class="card-title">Sunlimetech</h4>
-							<p class="card-text">This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.This is basic card with image on top, title, description and button.</p>
-							<ul class="list-inline">
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-facebook"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-twitter"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-skype"></i>
-									</a>
-								</li>
-								<li class="list-inline-item">
-									<a class="social-icon text-xs-center" target="_blank" href="#">
-										<i class="fa fa-google"></i>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	
 </div>

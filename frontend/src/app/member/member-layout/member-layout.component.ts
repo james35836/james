@@ -16,18 +16,17 @@ export class MemberLayoutComponent implements OnInit
 {
 	auth   					 	= localStorage.getItem('auth');
 	type						= localStorage.getItem('type');
-	user    					= null;
+	user    			  : any = null;
 	headers 					= null;
 	messages              : any = null;
 	send_message                = {};
-	initialize_loading_message 	= "Initializing...";
 
 
 	constructor(private userService: UserService, private rest: UserService, private router: Router, private http: HttpClient)
 	{ 
 		if (!this.auth) 
 		{
-			this.router.navigate(['/admin/login']);
+			this.router.navigate(['/login']);
 		}
 
 		if (this.type !='member')
@@ -45,10 +44,10 @@ export class MemberLayoutComponent implements OnInit
 
 	ngOnInit() 
 	{
-		this.navigationSwiper();
-		this.sideNav();
-		this.sideNavOn();
-		this.sideNavOff();
+		// this.navigationSwiper();
+		// this.sideNav();
+		// this.sideNavOn();
+		// this.sideNavOff();
 		
 	}
 
@@ -156,8 +155,7 @@ export class MemberLayoutComponent implements OnInit
 
 	getUserData(accessToken: string) 
 	{
-		this.initialize_loading_message = "Loading Information";
-	    this.userService.getUserData(accessToken)
+		this.userService.getUserData(accessToken)
         .subscribe(user_data => 
         {
             this.user = user_data;
@@ -165,7 +163,13 @@ export class MemberLayoutComponent implements OnInit
             var id_length = id.toString().length;
             localStorage.setItem('identification', this.makeid()+this.user.id);
             localStorage.setItem('id', id_length);
-            this.router.navigate(['/member/dashboard']);
+            setTimeout(()=>
+            {    
+            	console.log(this.user,"user");
+            	console.log(this.user.profile,"pro");
+            	this.router.navigate(['/member/dashboard']);
+			}, 1000);
+            
         },
         error =>
         {

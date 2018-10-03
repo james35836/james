@@ -1,3 +1,9 @@
+body {
+    background: #3498db !important;
+    font-family: sans-serif;
+}
+
+
 .initialize-loading
 {
 	position: fixed;
@@ -5,16 +11,31 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #fff;
+	background-color: #3498db;
 	z-index: 99999;
 	padding-top: 20%;
 
-	.loading
-	{
-		text-align: center;
-	}
-	.loading-message
-	{
-		text-align: center;
-	}
+  	h1 {
+      position: relative;
+      color: rgba(0, 0, 0, .3);
+      font-size: 5em;
+      text-align:center;
+  }
+  h1:before {
+      content: attr(data-text);
+      position: absolute;
+      overflow: hidden;
+      max-width: 7em;
+      white-space: nowrap;
+      color: #fff;
+      animation: loading 8s linear;
+  }
+  @keyframes loading {
+      0% {
+          max-width: 0;
+      }
+  }
 }
+
+
+

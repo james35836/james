@@ -19,7 +19,7 @@ class CreateTblMessagesTable8262018 extends Migration
             $table->text('message');
             $table->string('message_date');
             $table->integer('sender_id');
-            $table->integer('receiver_id');
+            $table->integer('connection_id');
             $table->integer('group_id');
             $table->tinyInteger('archive')->default(0);
         });

@@ -1,6 +1,7 @@
 <?php
 namespace App\Globals;
 use App\Models\Users;
+use App\Models\Tbl_user_info;
 use DB;
 use Carbon\Carbon;
 use Validator;
@@ -65,17 +66,15 @@ class Member
 				$insert["type"]				= "member";
 				$insert["first_name"]		= $data["first_name"];
 				$insert["last_name"]		= $data["last_name"];
-				$insert["contact"]			= $data["contact"];
-				$insert["country_id"]	    = $data["country_id"];
+				$insert["school_year_id"]	= $data["school_year_id"];
 				$insert["name"]	            = $data["first_name"]." ".$data["last_name"];
-        	}
+			}
         	else
         	{
 				$insert["created_at"]				= Carbon::now();
 				$insert["type"]						= "member";
 				$insert["crypt"]					= Crypt::encryptString($data["social_id"]);
-        		// $insert["email"]					= isset($data["email"]) ? $data["email"] : null;
-				$insert["first_name"]				= isset($data["first_name"]) ? $data["first_name"] : null;
+        		$insert["first_name"]				= isset($data["first_name"]) ? $data["first_name"] : null;
 				$insert["last_name"]				= isset($data["last_name"]) ? $data["last_name"] : null;
 				$insert["name"]	            		= isset($data["first_name"]) && isset($data["last_name"]) ? $data["first_name"]." ".$data["last_name"] : null;
         		$insert["registration_platform"]    = $data["register_platform"];
@@ -83,7 +82,14 @@ class Member
 				$insert["password"]					= Hash::make($data["social_id"]);
         	}
 
-			Users::insert($insert);
+			$user_id = Users::insertGetId($insert);
+			$info['user_phone_1']       = $data['user_phone_1'];
+        	$info['user_id']       		= $user_id;
+        	$info["user_birthdate"]		= $data["user_birthdate"];
+        	$info["user_job"]		    = "PROFESSIONAL";
+        	$info['user_bio']           = '"Homecoming means more than winning a competition or a sporting event. It provides an opportunity for every component of the university to come together to celebrate as a whole."';
+        	Tbl_user_info::insert($info);
+
 
 			$return["status"]         = "success"; 
 			$return["status_code"]    = 201; 

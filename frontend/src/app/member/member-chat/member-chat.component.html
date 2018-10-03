@@ -1,1 +1,97 @@
-wala oa
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header clearfix mt15 mb20">
+                <div class="left">
+                    <h4 class=" text-header">MESSAGES</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="page-content">
+        <div class="messaging">
+            <div class="inbox_msg">
+                <div class="inbox_people">
+                    <div class="headind_srch">
+                        <div class="recent_heading">
+                            <h4>Recent</h4>
+                        </div>
+                        <div class="srch_bar">
+                            <div class="stylish-input-group">
+                                <input type="text" class="search-bar"  placeholder="Search" >
+                                <span class="input-group-addon">
+                                    <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inbox_chat">
+                        <div class="chat_list active_chat" (click)="LOAD_MESSAGE('GENERAL','GROUP')">
+                            <div class="chat_people">
+                                <div class="chat_img"> <img src="../../../assets/front/img/sample-image.jpg" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>GENERAL ROOM<span class="chat_date">Dec 25</span></h5>
+                                    <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="chat_list">
+                            <div class="chat_people" (click)="LOAD_MESSAGE('BATCH','GROUP')">
+                                <div class="chat_img"> <img src="../../../assets/front/img/sample-image.jpg" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>BATCH ROOM<span class="chat_date">Dec 25</span></h5>
+                                    <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngFor = "let connection of connection_list;let i=index;" class="chat_list">
+                            <div class="chat_people" (click)="choose_messages('CONNECTION',i)">
+                                <div class="chat_img"> <img src="{{connection.connection_profile}}" alt="sunil"> </div>
+                                <div class="chat_ib">
+                                    <h5>{{connection.connection_name}}<span class="chat_date">Dec 25</span></h5>
+                                    <p>Test, which is a new approach to have all solutions
+                                    astrology under one roof.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mesgs" *ngIf="message_loaded">
+                    <div class="msg_header">
+                        <p>{{message_name}}</p>
+                    </div>
+                    <div class="msg_history">
+                        <span *ngFor="let data of message_loaded['messages'];">
+                            <div *ngIf ="data.who=='receiver'" class="incoming_msg">
+                                <div class="incoming_msg_img">
+                                    <img src="../../../assets/front/img/sample-image.jpg" alt="sunil">
+                                </div>
+                                <div class="received_msg">
+                                    <div class="received_withd_msg">
+                                        <p>{{data.message}}</p>
+                                        <span class="time_date"> 11:01 AM    |    June 9</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngIf ="data.who=='sender'" class="outgoing_msg">
+                                <div class="sent_msg">
+                                    <p>{{data.message}}</p>
+                                    <span class="time_date"> 11:01 AM    |    June 9</span>
+                                </div>
+                            </div>
+                        </span>
+                    </div>
+                    <div class="type_msg">
+                        <div class="input_msg_write">
+                            <input type="text" class="write_msg" [(ngModel)]="send_message.message"  placeholder="Type a message" />
+                            <button class="msg_send_btn" (click)="send_messages(send_message.id,message_on);" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,15 +1,65 @@
-.card-section { position: relative; bottom: 60px; }
-.card-block { padding: 30px;    margin-top: 100px; margin-bottom: 100px;}
-
-
-@media screen and (max-width: 992px) 
+.login-container
 {
-	div.card-section div.container div.card-block
-	{
-    	padding:30px;
+    color: #383535;
+    padding: 70px 0px 100px 0px;
+    .card
+    {
+        .card-header
+        {
+            background-color: #fff;
+        }
+        .card-body
+        {
+            color: #555555;
+            padding: 2rem;
+            .form-group .form-control 
+            {
+                padding-left: 2.375rem;
+            }
+
+            .form-group .form-control-icon 
+            {
+                position: absolute;
+                z-index: 2;
+                display: block;
+                width: 2.375rem;
+                height: 3.375rem;
+                line-height: 2.375rem;
+                text-align: center;
+                pointer-events: none;
+                color: #555555;
+                font-size: 30px;
+                margin-left: 5px;
+            }
+            .custom-control
+            {
+                display: inline-block;
+                vertical-align: middle;
+            }
+            .btn-google 
+            {
+              color: white;
+              background-color: #ea4335;
+            }
+
+            .btn-facebook 
+            {
+              color: white;
+              background-color: #3b5998;
+            }
+            .btn-login
+            {
+                width: 100%;
+                padding: 12px 0;
+                background-color: #ffffff;
+                color: #0495d6;
+                font-weight: 300;
+                font-size: 16px;
+                margin: 20px 0px 20px 0px;
+                border: 2px solid #0495d6;
+                border-radius: 5px;
+            }
+        }
     }
+
 }
-
-@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
-
-

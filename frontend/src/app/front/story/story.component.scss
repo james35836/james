@@ -1,0 +1,49 @@
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css');
+.bg-dark {
+    background-color: #343a40!important;
+}
+.card
+{
+	margin-bottom: 20px;
+}
+
+.story-details
+{
+	
+	.story-body
+	{
+		.story-photo
+		{
+			width: 100% !important;
+		}
+		.story-name
+		{
+			.name
+			{
+				font-size: 30px;
+			    margin: 10px;
+			    font-weight: 700;
+			}
+			.posted-by
+			{
+				font-size: 15px;
+				margin:10px;
+				font-weight: 500;
+			}
+			.posted-date
+			{
+				font-size: 13px;
+				margin:10px;
+				font-weight: 300;
+			}
+		}
+		.story-description
+		{
+			margin-top: 50px;
+		    font-size: 15px;
+		    letter-spacing: 0px;
+		    line-height: 1.8;
+		}
+	}
+	
+}

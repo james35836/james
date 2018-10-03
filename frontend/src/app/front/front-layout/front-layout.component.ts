@@ -17,14 +17,32 @@ export class FrontLayoutComponent implements OnInit, OnDestroy
 
 	ngOnInit() 
 	{
-		new WOW().init();
-
-		$('.nav-link').on('click',function() 
+		$('body').on('click',function() 
 		{
 		  	$('.navbar-collapse').collapse('hide');
 		});
+		var header = $(".navbar");
+  
+	    $(window).scroll(function() 
+	    {    
+	        var scroll = $(window).scrollTop();
+	        if (scroll >= 50) 
+	        {
+	        	if(window.matchMedia('(min-width: 800px)').matches)
+				{
+				    header.addClass("scrolled");
+				}
+	            
+	        } 
+	        else 
+	        {
+	            header.removeClass("scrolled");
+	        }
+	    });
 
-		// $('body').addClass('bg-front');
+
+
+		
 	}
 
 	ngOnDestroy()

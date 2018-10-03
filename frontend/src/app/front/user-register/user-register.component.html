@@ -1,0 +1,118 @@
+<div class="container">
+	<div class="register-container">
+		<div class="col-md-10 mx-auto">
+			<div class="card rounded-0">
+				<div class="card-header text-center">
+					<h5 class="mb-0">CREATE ACCOUNT</h5>
+				</div>
+				<div class="alert alert-danger {{ error_message != null ? '' : 'hide' }}" role="alert">
+					{{ error_message }}
+				</div>
+				<form class="form-signin" (ngSubmit)="onSubmit()" #signInForm="ngForm">
+					<div class="card-body row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="inputFirst">First Name</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.first_name" name="first_name" type="text" id="inputFirst" class="form-control" placeholder="First Name" required="" autofocus="">
+								<div class="invalid-feedback">Oops, you missed this one.</div>
+							</div>
+							
+							<div class="form-group">
+								<label for="inputLast">Last Name</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.last_name" name="last_name" type="text" id="inputLast" class="form-control" placeholder="Last Name" required="" autofocus="">
+								<div class="invalid-feedback">Oops, you missed this one.</div>
+							</div>
+							<div class="form-group">
+								<label for="inputContact">Contact Number</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.user_phone_1" name="user_phone_1" type="text" id="inputContact" class="form-control" placeholder="Contact Number" required="">
+								<div class="invalid-feedback">Oops, you missed this one.</div>
+							</div>
+							<div class="form-group">
+								<label for="inputContact">Birthdate</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.user_birthdate" name="user_birthdate" type="text" id="inputBirthdate" class="form-control" placeholder="Birthdate" required="">
+								<div class="invalid-feedback">Oops, you missed this one.</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="form-group">
+								<label for="inputEmail">Email address</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.email" name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+							</div>
+							<div class="form-group">
+								<label for="inputPassword">Password</label>.
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+								<div class="invalid-feedback">Enter your password too!</div>
+							</div>
+							<div class="form-group">
+								<label for="inputRPassword">Confirm Password</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<input [(ngModel)]="add_member.password_confirmation" name="password_confirmation" type="password" id="inputRPassword" class="form-control" placeholder="Confirm Password" required="">
+								<div class="invalid-feedback">Enter your password too!</div>
+							</div>
+							<div class="form-group" *ngIf="school_year_list">
+								<label for="inputPassword">Year Graduated</label>
+								<span class="fas fa-user form-control-icon"></span>
+								<select class="form-control" [(ngModel)]="add_member.school_year_id" name="school_year_id">
+									<ng-container *ngIf="school_year_list">
+									<option *ngFor="let list of school_year_list" value="{{list.school_year_id}}">{{list.school_year}}</option>
+									</ng-container>
+								</select>
+								<div class="invalid-feedback">Enter your password too!</div>
+							</div>
+						</div>
+					</div>
+					<div class="card-body row">
+						<div class="col-md-6 mx-auto text-center">
+							<button type="submit" class="btn-register">CREATE ACCOUNT</button>
+						</div>
+					</div>
+					<div class="card-body row">
+						<div class="col-md-6 mx-auto text-center">
+							<label class="custom-control">
+								<span class="custom-control-description small text-dark">Already have an account? <a [routerLink]="['/login']" href="javascript:void(0)">click here</a></span>
+							</label>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- <div class="text-center bg-login">
+	<form class="form-signin" (ngSubmit)="onSubmit()" #signInForm="ngForm">
+		<h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+		<div class="alert alert-danger {{ error_message != null ? '' : 'hide' }}" role="alert">
+			{{ error_message }}
+		</div>
+		<label for="inputEmail" class="sr-only">Email address</label>
+		<input [(ngModel)]="add_member.email" name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
+		<label for="inputFirst" class="sr-only">First Name</label>
+		<input [(ngModel)]="add_member.first_name" name="first_name" type="text" id="inputFirst" class="form-control" placeholder="First Name" required="" autofocus="">
+		<label for="inputLast" class="sr-only">Last Name</label>
+		<input [(ngModel)]="add_member.last_name" name="last_name" type="text" id="inputLast" class="form-control" placeholder="Last Name" required="" autofocus="">
+		<label for="inputPassword" class="sr-only">Password</label>
+		<input [(ngModel)]="add_member.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
+		<label for="inputRPassword" class="sr-only">Confirm Password</label>
+		<input [(ngModel)]="add_member.password_confirmation" name="password_confirmation" type="password" id="inputRPassword" class="form-control" placeholder="Confirm Password" required="">
+		<label for="inputContact" class="sr-only">Contact Number</label>
+		<input [(ngModel)]="add_member.contact" name="contact" type="text" id="inputContact" class="form-control" placeholder="Contact Number" required="">
+		<label for="inputPassword" class="sr-only">Country</label>
+		<select class="form-control" [(ngModel)]="add_member.country_id" name="country_id">
+			<ng-container *ngIf="country_list">
+			<option *ngFor="let list of country_list" value="{{list.country_id}}">{{list.country_name}}</option>
+			</ng-container>
+		</select>
+		<span class="label-register mb-2 d-block">Sign Up With</span>
+		<button class="btn btn-lg btn-primary btn-block btn-facebook {{ submitted ? 'disabled' : '' }}" type="button" (click)="socialSignUp('facebook')"><i class="fa fa-facebook-square mr-2"></i>Facebook</button>
+		<button class="btn btn-lg btn-primary btn-block btn-google {{ submitted ? 'disabled' : '' }}" type="button" (click)="socialSignUp('google')"><i class="fa fa-google-plus-square mr-2"></i>Google</button>
+		<div id="or" class="my-1"><span class="label-register">OR</span></div>
+		<button class="btn btn-lg btn-primary btn-block {{ submitted ? 'disabled' : '' }}" type="submit">Create Account</button>
+		<button routerLink="/" class="btn btn-lg btn-secondary btn-block {{ submitted ? 'disabled' : '' }}" type="button">&laquo; Back</button>
+	</form>
+</div> -->

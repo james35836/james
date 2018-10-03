@@ -55,6 +55,11 @@ class MemberController extends Controller
         return response()->json($response, 200);
     }
 
+    public function saample()
+    {
+        dd(Request::all()->upload->originalName);
+    }
+
 
     
 }

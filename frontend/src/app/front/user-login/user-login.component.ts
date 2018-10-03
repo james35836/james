@@ -25,10 +25,12 @@ export class UserLoginComponent implements OnInit
 	password = null;
 	headers = null;
 	data: any;
+	schol_year_list :any = null;
 
 	constructor(private socialAuthService: AuthService, private userService: UserService, private router: Router, private http: HttpClient) 
 	{
-		if (this.auth) 
+
+		if(this.auth) 
 		{
 			this.router.navigate(['/admin']);
 		}
@@ -36,7 +38,22 @@ export class UserLoginComponent implements OnInit
 
 	ngOnInit() 
 	{
-		
+		this.loadSchoolYear();
+	}
+	loadSchoolYear()
+	{
+		this.http.post(this.userService.domain + "/api/get_school_year", {}, 
+		{
+			headers: this.headers
+		})
+		.subscribe(response =>
+		{
+			this.schol_year_list = response;
+		},
+		error =>
+		{
+			console.log(error,"dsad");
+		});
 	}
 
 	ngOnDestroy()

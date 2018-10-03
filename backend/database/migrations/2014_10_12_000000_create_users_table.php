@@ -16,20 +16,21 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) 
         {
             $table->increments('id');
+            $table->string('profile')->default('../../../assets/backend/profile/user_profile.jpg');
             $table->string('name')->nullable();
+            $table->string('nickname')->nullable();
             $table->string('first_name')->nullable();
             $table->string('last_name')->nullable();
             $table->string('email')->nullable();
             $table->string('password');
-            $table->string('contact')->nullable();
             $table->string('type')->default('member');
-            $table->integer('country_id')->nullable()->unsigned();
+            $table->integer('status')->default(0);
+            $table->integer('school_year_id')->nullable()->unsigned();
             $table->string('social_id')->nullable();
             $table->string('registration_platform')->default('system');
             $table->text('crypt');
             $table->rememberToken();
             $table->timestamps();
-            
         });
     }
 

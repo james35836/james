@@ -1,40 +1,66 @@
-<div class="page-header">
-	<div class="container">
-		<div class="row">
-			<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-				<div class="page-caption">
-					<h1 class="page-title">EVENTS</h1>
+<div class="container">
+	<div class="page-container bg-white mb30">
+		<h3 class="page-title text-center">EVENTS</h3>
+		
+		<span *ngIf="enabled=='list'">
+			<div class="row clearfix">
+				<div class="col-md-12">
+					<ul class="event-list" *ngIf="event_list">
+						<li *ngFor="let data of event_list;let i= index;">
+							<time datetime="2014-07-20">
+								<span class="day">{{data.event_day}}</span>
+								<span class="month">{{data.event_month}}</span>
+							</time>
+							<img alt="Independence Day" src="{{data.event_photo}}" />
+							<div class="info">
+								<h2 class="title text-capitalize"><a (click)="event_view_details(i)" href="javascript:void(0)">{{data.event_name}}</a></h2>
+								<p class="time"><span class="text-bold">Time: </span>{{data.event_time}}</p>
+								<p class="desc">{{data.event_description}}</p>
+							</div>
+							<div class="social">
+								<ul>
+									<li class="facebook"><a href="{{data.event_facebook}}" target= "_blank"><span class="fa fa-facebook"></span></a></li>
+									<li class="twitter"><a href="{{data.event_twitter}}" target= "_blank"><span class="fa fa-twitter"></span></a></li>
+									<li class="linkedin"><a href="{{data.event_linkedin}}" target= "_blank"><span class="fa fa-linkedin"></span></a></li>
+								</ul>
+							</div>
+						</li>
+					</ul>
 				</div>
 			</div>
-		</div>
-	</div>
-</div>
-<div class="card-section">
-	<div class="container">
-		<div class="card-block bg-white mb30">
-			<div class="row">
-				<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
-					<div class="section-title mb-0">
-						<h2>All about ME. We share our knowledge on blog</h2>
-						<p>Our approach is very simple: we define your problem and give the best solution. </p>
+		</span>
+		<span *ngIf="enabled=='details'">
+			<div class="row clearfix event-details" *ngIf="event_list">
+				<div class="col-md-12 event-body">
+					<div class="text-right" (click)="go_to('list')">
+						<i class="fas fa-angle-double-left"></i> BACK
+					</div>
+					
+				</div>
+				<div class="col-md-12 event-body">
+					<div class="col-md-4 mx-auto">
+						<img class="event-photo" src="{{event_list[key].event_photo}}" />
+					</div>
+				</div>
+				<div class="col-md-12 event-body">
+					<div class="event-name text-center">
+						<div class="name">{{event_list[key].event_name}}</div>
+						<div class="posted-by">Published by : {{event_list[key].name}}</div>
+						<div class="posted-date">Date published : {{event_list[key].event_created_format}}</div>
+					</div>
+				</div>
+				<div class="col-md-12 event-body">
+					<div class="event-description text-justify">
+						<div class="name">{{event_list[key].event_description}}</div>
+					</div>
+				</div>
+				<div class="col-md-12 event-body">
+					<div class="text-right" (click)="go_to('list')">
+						<i class="fas fa-angle-double-left"></i> BACK
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				
-				<div class="col-md-6">
-					<div class="card-img-bottom">
-					</div>
-				</div>
-				<div class="col-md-6">
-					<div class="">
-						<h4 class="card-title">Curabitur gravida vestibulum imperdiet.</h4>
-						<p class="card-text">Cras convallis ut turpis vitae facilisis. Morbi eu augue vel quam efficitur rhoncus vitae eget lectus. Cras augue ligula, aliquam ut enim ut, feugiat imperdiet sem. Integer sed mi quis nisl eleifend interdum.</p>
-						<p class="card-text">Cras convallis ut turpis vitae facilisis. Morbi eu augue vel quam efficitur rhoncus vitae eget lectus. Cras augue ligula, aliquam ut enim ut, feugiat imperdiet sem.</p>
-						<a href="#" class="btn btn-primary">Read More</a>
-					</div>
-				</div>
-			</div>
-		</div>
+		</span>
+		
 	</div>
 </div>

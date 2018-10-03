@@ -1,0 +1,204 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="page-header clearfix mt15 mb20">
+                    <div class="left">
+                        <h4 class=" text-header">MANAGE STORY</h4>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <div class="page-content">
+            <div class="page-content-header">
+                <div class="row clearfix ">
+                    <div class="col-md-3">
+                        <div class="input-group">
+                            <input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+                            <span class="input-group-append">
+                                <div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-3 offset-md-6">
+                        <button class="btn btn-primary w-100" data-toggle="modal" data-target="#createNewStory">CREATE NEW</button>
+                    </div>
+                </div>
+            </div>
+            <div class="page-content-body">
+                <div class="row clearfix">
+                    <div class="table-responsive">
+                        <table class="table table-striped table-sm">
+                            <thead>
+                                <tr>
+                                    <th>No.</th>
+                                    <th>Story Of</th>
+                                    <th>Story Title</th>
+                                    <th>Story Created</th>
+                                    <th>Story Posted By</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody *ngIf="story_list">
+                                <tr *ngFor= "let data of story_list;let i=index;">
+                                    <td>{{i+1}}</td>
+                                    <td>{{data.story_by}}</td>
+                                    <td>{{data.story_title}}</td>
+                                    <td>{{data.story_created_format}}</td>
+                                    <td>{{data.name}}</td>
+                                    <td><span class="action-link" (click)="story_details(i)">View</span></td>
+                                    <td><span class="action-link">Delete</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    
+
+<!-- CREATE EVENT MODAL -->
+<div class="modal fade" id="createNewStory">
+    <div class="modal-dialog modal-lg">
+        <form (ngSubmit)="storyCreateSubmit()" #eventCreateForm="ngForm">
+        <div class="modal-content">
+        	<div class="modal-header">
+                <h4 class="modal-title">CREATE STORY</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                            	<div class="form-group row">
+                                    <label for="text" class="col-12 col-form-label">STORY OF</label>
+                                    <div class="col-12">
+                                        <input id="text" name="story_by" [(ngModel)]="new_story.story_by" placeholder="EVENT TITLE" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="text" class="col-12 col-form-label">STORY TITLE</label>
+                                    <div class="col-12">
+                                        <input id="text" name="story_title" [(ngModel)]="new_story.story_title" placeholder="EVENT TITLE" class="form-control here" required="required" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="text" class="col-12 col-form-label">STORY QOUTE</label>
+                                    <div class="col-12">
+                                        <textarea id="textarea" name="story_qoute" [(ngModel)]="new_story.story_qoute" cols="40" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="text" class="col-12 col-form-label">STORY BODY</label>
+                                    <div class="col-12">
+                                        <textarea id="textarea" name="story_body" [(ngModel)]="new_story.story_body" cols="40" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+</div>
+
+<!-- View EVENT MODAL -->
+<div class="modal fade" id="viewEventDetails">
+    <div class="modal-dialog modal-lg">
+        <form (ngSubmit)="eventCreateSubmit()" #eventCreateForm="ngForm">
+        <div class="modal-content">
+            
+            <div class="modal-header">
+                <h4 class="modal-title">CREATE EVENT</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="card">
+                    <div class="card-body">
+                        
+                        <div class="row">
+                            <div class="col-md-12">
+                                
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT TITLE</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_name" [(ngModel)]="new_story.event_name" placeholder="EVENT TITLE" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT DATE</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_date" [(ngModel)]="new_story.event_date" placeholder="EVENT DATE" class="form-control here" required="required" type="date">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT TIME</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_time" [(ngModel)]="new_story.event_time" placeholder="EVENT TIME (3:00 PM - 4:00 PM)" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT VENUE</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_venue" [(ngModel)]="new_story.event_venue" placeholder="EVENT VENUE" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT FACEBOOK LINK</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_facebook" [(ngModel)]="new_story.event_facebook" placeholder="https://www.facebook.com/event_name" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT TWITTER LINK</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_twitter" [(ngModel)]="new_story.event_twitter" placeholder="https://www.twitter.com/event_name" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="text" class="col-12 col-form-label">EVENT LINKEDIN LINK</label>
+                                        <div class="col-12">
+                                            <input id="text" name="event_linkedin" [(ngModel)]="new_story.event_linkedin" placeholder="https://www.linkedIn.com/event_name" class="form-control here" required="required" type="text">
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group row">
+                                        <label for="textarea" class="col-12 col-form-label">EVENT DESCRIPTION</label>
+                                        <div class="col-12">
+                                            <textarea id="textarea" name="event_description" [(ngModel)]="new_story.event_description" cols="40" rows="5" class="form-control"></textarea>
+                                        </div>
+                                    </div>
+                                    
+                                    
+                                
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+            
+        </div>
+        </form>
+    </div>
+</div>

@@ -1,213 +1,314 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-    <h1 class="h2">Profile Settings</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header clearfix mt15 mb20">
+                <div class="left">
+                    <h4 class=" text-header">PROFILE</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="page-content user-profile-page">
+        <div class="row clearfix">
+            <div class="col-lg-3 col-md-4 col-sm-4" >
+                <div class="profile-container text-center">
+                    <img _ngcontent-c7="" alt="avatar" class="profile-pic mx-auto" src="../../../assets/front/img/sample-image.jpg">
+                    <input class="file-upload" id="new_profile" id="newFile" type="file" accept="image/*"/>
+                    <input id="old_profile" value="../../../assets/front/img/sample-image.jpg" type="hidden" />
+                    <div class="upload-button">Upload New Profile</div>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item text-muted"><span class="pull-left"><strong>SY</strong></span> : 1994-1997</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Shares</strong></span> 125</li>
+                    <li class="list-group-item text-right"><span class="pull-left"><strong>Visitors</strong></span> 13</li>
+                </ul>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Social Media</div>
+                    <div class="panel-body">
+                        <i class="fa fa-facebook fa-2x"></i>
+                        <i class="fa fa-github fa-2x"></i>
+                        <i class="fa fa-twitter fa-2x"></i>
+                        <i class="fa fa-pinterest fa-2x"></i>
+                        <i class="fa fa-google-plus fa-2x"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-8 col-sm-8">
+                <div class="row clearfix">
+                    <div class="col-md-2 offset-md-10 profile-header-btn">
+                        
+                        <div class="btn-group" role="group" aria-label="Basic example">
+                            <button type="button" class="btn btn-secondary" (click)="click_button('user_info')"><i class="fas fa-info"></i></button>
+                            <button type="button" class="btn btn-secondary" (click)="click_button('update_profile')"><i class="fas fa-user-edit"></i></button>
+                            <button type="button" class="btn btn-secondary" (click)="click_button('update_password')"><i class="fas fa-user-cog"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <span *ngIf="enabled=='user_info'">
+                    <div class="row clearfix user-profile-details ">
+                        <table class="table table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td>Department:</td>
+                                    <td>Programming</td>
+                                </tr>
+                                <tr>
+                                    <td>Hire date:</td>
+                                    <td>06/23/2013</td>
+                                </tr>
+                                <tr>
+                                    <td>Date of Birth</td>
+                                    <td>01/24/1988</td>
+                                </tr>
+                                
+                                
+                                <tr>
+                                    <td>Gender</td>
+                                    <td>Female</td>
+                                </tr>
+                                <tr>
+                                    <td>Home Address</td>
+                                    <td>Kathmandu,Nepal</td>
+                                </tr>
+                                <tr>
+                                    <td>Email</td>
+                                    <td><a href="mailto:info@support.com">info@support.com</a></td>
+                                </tr>
+                                <tr>
+                                    
+                                    
+                                    <td>Phone Number</td>
+                                    <td>123-4567-890(Landline)<br><br>555-4567-890(Mobile)
+                                    </td>
+                                    
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                        
+                    </div>
+                </span>
+                <span *ngIf="enabled=='update_profile'">
+                    <div class="row clearfix user-update-details ">
+                        <!-- <form class="form" action="" method="post" id="registrationForm"> -->
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-xs-6">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-xs-6">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-xs-6">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-xs-6">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <div class="col-xs-6">
+                                <div class="label">NAME</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4 offset-md-8 mx-auto action-btn">
+                            <button class="btn-submit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                        </div>
+                    </div>
+                </span>
+                <span *ngIf="enabled=='update_password'">
+                    <div class="row clearfix user-update-password ">
+                        <div class="col-md-6 mx-auto">
+                            <div class="form-group">
+                                <div class="label">Current Password</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                            <div class="form-group">
+                                <div class="label">New Password</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                            <div class="form-group">
+                                <div class="label">Confirm Password</div>
+                                <input type="text" class="form-control" name="first_name"  placeholder="first name" title="enter your first name if any.">
+                            </div>
+                            <div class="form-group action-btn">
+                                <button class="btn-submit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i> Save</button>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </span>
+            </div>
+        </div>
+    </div>
 </div>
-<div class="row">
-        <div class="col-md-8">
-            <ul class="nav nav-tabs">
-                <li class="nav-item">
-                    <a href="" data-target="#profile" data-toggle="tab" class="nav-link active">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#messages" data-toggle="tab" class="nav-link">Messages</a>
-                </li>
-                <li class="nav-item">
-                    <a href="" data-target="#edit" data-toggle="tab" class="nav-link">Edit</a>
-                </li>
-            </ul>
-            <div class="tab-content p-b-3">
-                <div class="tab-pane active" id="profile">
-                    <h4 class="m-y-2">User Profile</h4>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h6>About</h6>
-                            <p>
-                                Web Designer, UI/UX Engineer
-                            </p>
-                            <h6>Hobbies</h6>
-                            <p>
-                                Indie music, skiing and hiking. I love the great outdoors.
-                            </p>
-                        </div>
-                        <div class="col-md-6">
-                            <h6>Recent Tags</h6>
-                            <a href="" class="tag tag-default tag-pill">html5</a>
-                            <a href="" class="tag tag-default tag-pill">react</a>
-                            <a href="" class="tag tag-default tag-pill">codeply</a>
-                            <a href="" class="tag tag-default tag-pill">angularjs</a>
-                            <a href="" class="tag tag-default tag-pill">css3</a>
-                            <a href="" class="tag tag-default tag-pill">jquery</a>
-                            <a href="" class="tag tag-default tag-pill">bootstrap</a>
-                            <a href="" class="tag tag-default tag-pill">responsive-design</a>
-                            <hr>
-                            <span class="tag tag-primary"><i class="fa fa-user"></i> 900 Followers</span>
-                            <span class="tag tag-success"><i class="fa fa-cog"></i> 43 Forks</span>
-                            <span class="tag tag-danger"><i class="fa fa-eye"></i> 245 Views</span>
-                        </div>
-                        <div class="col-md-12">
-                            <h4 class="m-t-2"><span class="fa fa-clock-o ion-clock pull-xs-right"></span> Recent Activity</h4>
-                            <table class="table table-hover table-striped">
-                                <tbody>                                    
-                                    <tr>
-                                        <td>
-                                            <strong>Abby</strong> joined ACME Project Team in <strong>`Collaboration`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Gary</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Kensington</strong> deleted MyBoard3 in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>John</strong> deleted My Board1 in <strong>`Discussions`</strong>
-                                        </td>
 
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <strong>Skell</strong> deleted his post Look at Why this is.. in <strong>`Discussions`</strong>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
+<!-- <div class="container profile-details">
+    <form method="post">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-img">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog" alt="">
+                    <div class="file btn btn-lg btn-primary">
+                        Change Photo
+                        <input type="file" name="file">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="profile-head">
+                    <h5>
+                    Kshiti Ghelani
+                    </h5>
+                    <h6>
+                    Web Developer and Designer
+                    </h6>
+                    <p class="proile-rating">RANKINGS : <span>8/10</span></p>
+                    <ul class="nav nav-tabs" id="myTab" role="tablist">
+                        <li class="nav-item">
+                            <a class="nav-link active show" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Timeline</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">
+                <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="profile-work">
+                    <p>WORK LINK</p>
+                    <a href="">Website Link</a><br>
+                    <a href="">Bootsnipp Profile</a><br>
+                    <a href="">Bootply Profile</a>
+                    <p>SKILLS</p>
+                    <a href="">Web Designer</a><br>
+                    <a href="">Web Developer</a><br>
+                    <a href="">WordPress</a><br>
+                    <a href="">WooCommerce</a><br>
+                    <a href="">PHP, .Net</a><br>
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="tab-pane fade active show" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <div class="row" style="
+                            border-bottom: 2px solid #5555;
+                            ">
+                            <div class="col-md-6">
+                                <label>User Id</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Kshiti123</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Name</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Kshiti Ghelani</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Email</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>kshitighelani@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Phone</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>123 456 7890</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Profession</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Web Developer and Designer</p>
+                            </div>
                         </div>
                     </div>
-                    <!--/row-->
-                </div>
-                <div class="tab-pane" id="messages">
-                    <h4 class="m-y-2">Recent Messages &amp; Notifications</h4>
-                    <div class="alert alert-info alert-dismissable">
-                        <a class="panel-close close" data-dismiss="alert">×</a> This is an <strong>.alert</strong>. Use this to show important messages to the user.
+                    <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Experience</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Hourly Rate</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>10$/hr</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Total Projects</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>230</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>English Level</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>Expert</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label>Availability</label>
+                            </div>
+                            <div class="col-md-6">
+                                <p>6 months</p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label>Your Bio</label><br>
+                                <p>Your detail description</p>
+                            </div>
+                        </div>
                     </div>
-                    <table class="table table-hover table-striped">
-                        <tbody>                                    
-                            <tr>
-                                <td>
-                                   <span class="pull-xs-right font-weight-bold">3 hrs ago</span> Here is your a link to the latest summary report from the..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="pull-xs-right font-weight-bold">Yesterday</span> There has been a request on your account since that was..
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="pull-xs-right font-weight-bold">9/10</span> Porttitor vitae ultrices quis, dapibus id dolor. Morbi venenatis lacinia rhoncus. 
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                   <span class="pull-xs-right font-weight-bold">9/4</span> Vestibulum tincidunt ullamcorper eros eget luctus. 
-                                </td>
-                            </tr>
-                        </tbody> 
-                    </table>
-                </div>
-                <div class="tab-pane" id="edit">
-                    <h4 class="m-y-2">Edit Profile</h4>
-                    <form role="form">
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">First name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Jane">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Last name</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="Bishop">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Email</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="email" value="email@gmail.com">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Company</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Website</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="url" value="">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Address</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="" placeholder="Street">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-6">
-                                <input class="form-control" type="text" value="" placeholder="City">
-                            </div>
-                            <div class="col-lg-3">
-                                <input class="form-control" type="text" value="" placeholder="State">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Time Zone</label>
-                            <div class="col-lg-9">
-                                <select id="user_time_zone" class="form-control" size="0">
-                                    <option value="Hawaii">(GMT-10:00) Hawaii</option>
-                                    <option value="Alaska">(GMT-09:00) Alaska</option>
-                                    <option value="Pacific Time (US &amp; Canada)">(GMT-08:00) Pacific Time (US &amp; Canada)</option>
-                                    <option value="Arizona">(GMT-07:00) Arizona</option>
-                                    <option value="Mountain Time (US &amp; Canada)">(GMT-07:00) Mountain Time (US &amp; Canada)</option>
-                                    <option value="Central Time (US &amp; Canada)" selected="selected">(GMT-06:00) Central Time (US &amp; Canada)</option>
-                                    <option value="Eastern Time (US &amp; Canada)">(GMT-05:00) Eastern Time (US &amp; Canada)</option>
-                                    <option value="Indiana (East)">(GMT-05:00) Indiana (East)</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Username</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="text" value="janeuser">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label">Confirm password</label>
-                            <div class="col-lg-9">
-                                <input class="form-control" type="password" value="11111122333">
-                            </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-lg-3 col-form-label form-control-label"></label>
-                            <div class="col-lg-9">
-                                <input type="reset" class="btn btn-secondary" value="Cancel">
-                                <input type="button" class="btn btn-primary" value="Save Changes">
-                            </div>
-                        </div>
-                    </form>
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
-            <img src="//placehold.it/150" class="m-x-auto img-fluid img-circle" alt="avatar">
-            <h6 class="m-t-2">Upload a different photo</h6>
-            <label class="custom-file">
-                <input type="file" id="file" class="custom-file-input">
-                <span class="custom-file-control">Choose file</span>
-            </label>
-        </div>
-    </div>
+    </form>
+</div> -->

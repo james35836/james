@@ -1,0 +1,68 @@
+<div class="container">
+	<div class="row">
+		<!-- dashboard header -->
+		<div class="col-md-12">
+			<div class="page-header clearfix mt15 mb20">
+				<div class="left">
+					<h4 class=" text-header">MANAGE USER</h4>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+	<div class="page-content">
+		<div class="page-content-header">
+			<div class="row clearfix ">
+				<div class="col-md-3">
+					<select name="" id="" class="form-control">
+						<option value="">fhgh</option>
+						<option value="">hfgh</option>
+						<option value="">fghfgh</option>
+						<option value="">hfgh</option>
+						<option value="">fgh</option>
+					</select>
+				</div>
+				<div class="col-md-3 offset-md-6">
+					<div class="input-group">
+						<input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+						<span class="input-group-append">
+							<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="page-content-body">
+			<div class="row clearfix">
+				<div class="table-responsive">
+					<table class="user-table table table-bordered  table-sm">
+						<thead>
+							<tr class="text-center">
+								<th>Profile</th>
+								<th>First Name</th>
+								<th>Last Name</th>
+								<th>Email</th>
+								<th>Phone Number</th>
+								<th colspan="2">Action</th>
+							</tr>
+						</thead>
+						<tbody *ngIf = "users_list">
+							<tr *ngFor = "let data of users_list;">
+								<td><img class="user-img" src="{{data.profile}}" alt=""></td>
+								<td>{{data.first_name}}</td>
+								<td>{{data.last_name}}</td>
+								<td>{{data.email}}</td>
+								<td>{{data.user_phone_1}}</td>
+								
+								<td>View</td>
+								<td>delete</td>
+							</tr>
+							
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+</div>

@@ -3,14 +3,14 @@ import { CommonModule } from '@angular/common';
 import { Routes, RouterModule } from '@angular/router';
 import { MemberLayoutComponent } from '../member-layout/member-layout.component';
 import { MemberDashboardComponent } from '../member-dashboard/member-dashboard.component';
-import { MemberSlotComponent } from '../member-slot/member-slot.component';
 import { MemberSettingsComponent } from '../member-settings/member-settings.component';
-import { MemberLoginComponent } from '../member-login/member-login.component';
 import { MemberDirectoryComponent } from '../member-directory/member-directory.component';
 
 import { MemberChatComponent } from '../member-chat/member-chat.component';
-import { MemberRegisterComponent } from '../member-register/member-register.component';
+import { MemberTimelineComponent } from '../member-timeline/member-timeline.component';
+
 import { MemberInitializeComponent } from '../member-initialize/member-initialize.component';
+import { MemberGalleryComponent } from '../member-gallery/member-gallery.component';
 
 
 const routes: Routes = [
@@ -19,16 +19,15 @@ const routes: Routes = [
   	{ path: 'member/dashboard', component: MemberDashboardComponent },
   
   
-
-    { path: 'member/slot', component: MemberSlotComponent },
     { path: 'member/settings', component: MemberSettingsComponent },
  
     { path: 'member/directory', component: MemberDirectoryComponent },
     { path: 'member/chat', component: MemberChatComponent },
+    { path: 'member/timeline', component: MemberTimelineComponent },
     { path: 'member/initialize', component: MemberInitializeComponent },
+    { path: 'member/gallery', component: MemberGalleryComponent },
   ]},
-  { path: 'member/login', component: MemberLoginComponent },
-  { path: 'member/register', component: MemberRegisterComponent },
+ 
 ];
 
 @NgModule({

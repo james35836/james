@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="page-container bg-white mb30">
+        <h3 class="page-title text-center">STORIES</h3>
+        <span *ngIf="enabled=='list'">
+            <div class="row" *ngIf ="story_list">
+                <div *ngFor="let data of story_list;let i=index;" class="col-md-4">
+                    <div class="card">
+                        <img class="card-img-top" src="{{data.story_photo}}" alt="Card image cap">
+                        <div class="card-block p-3">
+                            <h5 class="card-title">{{data.story_title}}</h5>
+                            <p class="card-story-by">Story of {{data.story_by}}</p>
+                            <p class="card-text">"{{data.story_qoute}}"</p>
+                            <a (click)="event_view_details(i)" href="javascript:void(0)" class="btn-primary-custom rounded-0 mb-2">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </span>
+        <span *ngIf="enabled=='details'">
+            <div class="row clearfix story-details" *ngIf="story_list">
+                <div class="col-md-12 story-body">
+                    <div class="text-right" (click)="go_to('list')">
+                        <i class="fas fa-angle-double-left"></i> BACK
+                    </div>
+                    
+                </div>
+                <div class="col-md-12 story-body">
+                    <div class="col-md-4 mx-auto">
+                        <img class="story-photo" src="{{story_list[key].story_photo}}" />
+                    </div>
+                </div>
+                <div class="col-md-12 story-body">
+                    <div class="story-name text-center">
+                        <div class="name">{{story_list[key].story_title}}</div>
+                        <div class="posted-by">Published by : {{story_list[key].name}}</div>
+                        <div class="posted-date">Date published : {{story_list[key].story_created_format}}</div>
+                    </div>
+                </div>
+                <div class="col-md-12 story-body">
+                    <div class="story-description text-center">
+                        <div class="name">"{{story_list[key].story_qoute}}"</div>
+                    </div>
+                </div>
+                <div class="col-md-12 story-body">
+                    <div class="story-description text-justify">
+                        <div class="name">{{story_list[key].story_body}}</div>
+                    </div>
+                </div>
+                <div class="col-md-12 story-body">
+                    <div class="text-right" (click)="go_to('list')">
+                        <i class="fas fa-angle-double-left"></i> BACK
+                    </div>
+                </div>
+            </div>
+        </span>
+    </div>
+</div>

@@ -14,7 +14,7 @@ import 'bootstrap';
 export class MemberDashboardComponent implements OnInit {
 
 	headers                 		 = null;
-
+	form_data                        = null;
 
 	constructor(private rest: UserService, private http: HttpClient, public layout: MemberLayoutComponent, private toastr: ToastrService) 
 	{
@@ -22,13 +22,32 @@ export class MemberDashboardComponent implements OnInit {
 
 	ngOnInit() 
 	{
-		this.headers = this.layout.headers;
-		
 		
 	}
+	fileUpload(event)
+	{
+		this.form_data = new FormData();
+
+		if(event.target.files.length > 0)
+		{
+			this.form_data.append('upload', event.target.files[0]);
+			this.form_data.append('folder', 'gdgdfgdfs');
+
+			
+
+			this.http.post(this.rest.domain + "/api/sample",this.form_data, 
+	  		{  
+	  			headers: this.layout.headers 
+	  		}).subscribe(response=>
+			{
+				console.log(response);
+			});
+		}
+	}
+	
 
 
-	/* SUBMIT AREA */
+	
 	
 	
 

@@ -1,151 +1,39 @@
-@import "../../app.component";
-
-* 
+.carousel 
 {
-    font-family: "Lato", sans-serif;
+    margin-bottom: 4rem;
+    .carousel-caption 
+    {
+        bottom: 3rem;
+        z-index: 10;
+    }
+    .carousel-item 
+    {
+        height: 40rem;
+        background-color: #777;
+        img 
+        {
+            position: absolute;
+            top: 0;
+            left: 0;
+            min-width: 100%;
+            height: 40rem;
+        }
+    }
 }
-.carousel-item 
+.marketing
 {
-  	height: 100vh;
-  	min-height: 300px;
-  	background: no-repeat center center scroll;
-  	-webkit-background-size: cover;
-  	-moz-background-size: cover;
-  	-o-background-size: cover;
-  	background-size: cover;
-}
-
-.covertext {
-  position: absolute; /* To make the div to be place anywhere. It is out of the document flow */
-  top: 200px; /* The distance between the div with the top of document */
-  left: 0px; /* Make the div full width */
-  right: 0px; /* Make the div full width */
-}
-
-.title {
-  font-family: Verdana;
-  font-weight: 600;
-  font-size: 60px;
-  color: #ffffff;
-  text-align: center;
-}
-
-.subtitle {
-  font-family: Verdana;
-  font-size: 23px;
-  color: #ffffff;
-  text-align: center;
-}
-
-.explore {
-  text-align: center;
-  margin-top: 10px;
-}
-
-.explore .btn-lg,
-.explore .btn-lg:hover {
-  border-radius: 4px;
-    padding: 10px 69px;
-    font-size: 22px;
-    background-image: none;
-    background-color: #204892;
-    border-color: #fbf7f5;
-    color: #ffffff;
-}
-
-.btn,
-.btn:hover {
-  border-radius: 0px;
-  background-image: none;
-  background-color: #FF4000;
-  border-color: #FF4000;
-  color: #ffffff;
-  margin-bottom: 20px;
-  box-shadow: none;
-  outline: none;
-}
-
-.btn:focus,
-.btn:active:focus,
-.btn.active:focus,
-.btn.focus,
-.btn:active.focus,
-.btn.active.focus {
-  color: #ffffff;
-  outline: none;
-}
-
-
-
-
-
-@import url(https://fonts.googleapis.com/css?family=Lato:900);
-*, *:before, *:after{
-  box-sizing:border-box;
-}
-body{
-  font-family: 'Lato', sans-serif;
-    ;
-}
-div.foo{
-  width: 90%;
-  margin: 0 auto;
-  text-align: center;
-}
-.letter{
-  display: inline-block;
-  font-weight: 900;
-  font-size: 2em;
-  margin: 0.0em;
-  position: relative;
-  color: #204892;
-  transform-style: preserve-3d;
-  perspective: 400;
-  z-index: 1;
-}
-.letter:before, .letter:after{
-  position:absolute;
-  content: attr(data-letter);
-  transform-origin: top left;
-  top:0;
-  left:0;
-}
-.letter, .letter:before, .letter:after{
-  transition: all 0.3s ease-in-out;
-}
-.letter:before{
-  color: #fff;
-  text-shadow: 
-    -1px 0px 1px rgba(255,255,255,.8),
-    1px 0px 1px rgba(0,0,0,.8);
-  z-index: 3;
-  transform:
-    rotateX(0deg)
-    rotateY(-15deg)
-    rotateZ(0deg);
-}
-.letter:after{
-  color: rgba(0,0,0,.11);
-  z-index:2;
-  transform:
-    scale(1.08,1)
-    rotateX(0deg)
-    rotateY(0deg)
-    rotateZ(0deg)
-    skew(0deg,1deg);
-}
-.letter:hover:before{
-  color: #fafafa;
-  transform:
-    rotateX(0deg)
-    rotateY(-40deg)
-    rotateZ(0deg);
-}
-.letter:hover:after{
-  transform:
-    scale(1.08,1)
-    rotateX(0deg)
-    rotateY(40deg)
-    rotateZ(0deg)
-    skew(0deg,22deg);
+    .col-lg-4
+    {
+        margin-bottom: 1.5rem;
+        text-align: center;
+        p 
+        {
+            margin-right: .75rem;
+            margin-left: .75rem;
+        }
+    }
+    h2
+    {
+        font-weight: 400;
+    }
 }
