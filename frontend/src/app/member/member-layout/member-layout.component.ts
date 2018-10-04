@@ -34,7 +34,12 @@ export class MemberLayoutComponent implements OnInit
 			this.router.navigate(['/'+this.type]);
 		}
 
-		this.initialize_page();
+		// this.initialize_page();
+		this.headers = new HttpHeaders({
+            "Accept": "application/json",
+            "Authorization": "Bearer " + this.auth,
+        });
+	    this.getUserData(this.auth);
 	}
 
 	initialize_page()
@@ -167,7 +172,7 @@ export class MemberLayoutComponent implements OnInit
             {    
             	console.log(this.user,"user");
             	console.log(this.user.profile,"pro");
-            	this.router.navigate(['/member/dashboard']);
+            	// this.router.navigate(['/member/dashboard']);
 			}, 1000);
             
         },

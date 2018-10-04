@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '../../user.service';
+import { MemberLayoutComponent } from '../member-layout/member-layout.component';
+import { HttpClientModule, HttpClient, HttpHeaders } from '@angular/common/http';
+import * as $ from 'jquery';
+import 'bootstrap';
 
 @Component({
   selector: 'app-member-gallery',

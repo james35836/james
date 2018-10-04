@@ -18,6 +18,20 @@
             min-width: 100%;
             height: 40rem;
         }
+        .carousel-caption
+        {
+            background-color: rgba(33, 33, 33, 0.4);
+            color: white;
+            font-weight: bold;
+            border: 1px solid #f1f1f1;
+            position: absolute;
+            top: 52%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            width: 80%;
+            padding: 20px;
+        }
     }
 }
 .marketing
@@ -36,4 +50,52 @@
     {
         font-weight: 400;
     }
+}
+
+.banner-button
+{
+    .button 
+    {
+        display: inline-block;
+        border-radius: 4px;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 18px;
+        padding: 17px;
+        width: 230px;
+        transition: all 0.5s;
+        cursor: pointer;
+        margin: 5px;
+        span 
+        {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+            &:after 
+            {
+                content: '\00bb';
+                position: absolute;
+                opacity: 0;
+                top: 0;
+                right: -20px;
+                transition: 0.5s;
+            }
+        }
+    }
+    &:hover 
+    {
+        span 
+        {
+            padding-right: 25px;
+            &:after 
+            {
+                opacity: 1;
+                right: 0;
+            }
+        }
+    }
+    
 }
