@@ -1,106 +1,77 @@
 <span class="member-layout">
-	<div class="header  d-flex flex-wrap">
-		<div class="col-md-10 mobile-icon d-none">
-			<a class=""><i class="fas fa-bars"></i></a>
-		</div>
-		<div class="col-md-4 right text-right">
-			<div class="name-container">
-				<div class="name" *ngIf="user">{{ user.name }}</div>
-				<div class="dropdown-arrow">
-					<i class="fa fa-caret-down"></i>
-				</div>
-				<div class="dropdown">
-					<div class="dropdown-container">
-						<div (click)="hideDropdown()" routerLink="/member/settings" class="menu">Profile Settings</div>
-						<div (click)="onLogout()" class="menu top-divide">Logouts</div>
+	<div class="header">
+		<div class="container  header-item-container">
+			<div class="header-item"><img class="alumni-logo" src="https://i2.wp.com/50.87.248.62/~muasdao1/wp-content/uploads/2016/06/MUA_AlumLogo.png" alt=""></div>
+			<div class="header-item"></div>
+			<div class="header-item text-right">
+				<div class="user-container">
+					<div class="user-name" *ngIf="user">{{ user.first_name }}</div>
+					<div class="dropdown-arrow">
+						<i class="fa fa-caret-down"></i>
+					</div>
+					<div class="dropdown">
+						<div class="dropdown-container">
+							<div (click)="hideDropdown()" routerLink="/member/settings" class="menu-settings">Profile Settings</div>
+							<div (click)="onLogout()" class="menu top-divide">Logout</div>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
 	</div>
-	<div class="sidebar small">
-		<div class="nav-logo">
-			<div class="nav-logo-container">
-				<div class="logo-holder">
-					<a class="collapsed-sidebar d-none"><i class="fas fa-user-graduate"></i></a>
-					<a class="uncollapsed-sidebar"><i class="fas fa-bars"></i></a>
-				</div>
-				<div class="company-name">
-					<a >
-						JAMES OSMSORA
-					</a>
-				</div>
+	<div class="navigation bg-light">
+		<div class="container nav-container">
+			<div class="nav-item  w-100">
+				<a [routerLink]="['/member/dashboard']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="javascript:void(0)" class="nav-item-holder">
+					<div class="nav-item-icon">
+						<i class="fas fa-images"></i>
+						<!-- <img src="../assets/backend/navigation_icon/group_icon.png" alt="" class="nav-img"> -->
+					</div>
+					<div class="nav-title">DASHBOARD</div>
+				</a>
 			</div>
-			
-		</div>
-		<div class="profile-holder active justify-content-center align-items-center">
-			<div class="profile">
-				<div class="img">
-					<a  *ngIf="user">
-						<img id="img" class="img-user" src="{{user.profile}}">
-					</a>
-				</div>
-				<div class="text">
-					<div class="name" *ngIf="user">{{user.name}}</div>
-					<div class="sub" *ngIf="user">{{user.email}}</div>
-				</div>
+			<div class="nav-item  w-100">
+				<a [routerLink]="['/member/timeline']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="javascript:void(0)" class="nav-item-holder">
+					<div class="nav-item-icon">
+						<i class="fas fa-portrait"></i>
+						<!-- <img src="../assets/backend/navigation_icon/group_icon.png" alt="" class="nav-img"> -->
+					</div>
+					<div class="nav-title">TIMELINE</div>
+				</a>
 			</div>
-		</div>
-		<div class="side-nav">
-			<ul>
-				<li class="">
-					<a [routerLink]="['/member/dashboard']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fas fa-tachometer-alt"></i></div><span>DASHBOARD</span>
-						</div>
-					</a>
-				</li>
-				<li class="">
-					<a [routerLink]="['/member/timeline']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fas fa-user-ninja"></i></div><span>TIMELINE</span>
-						</div>
-					</a>
-				</li>
-				<li class="">
-					<a [routerLink]="['/member/directory']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fas fa-users"></i></div><span>DIRECTORY</span>
-						</div>
-					</a>
-				</li>
-				<li class="">
-					<a [routerLink]="['/member/chat']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fas fa-comments"></i></div><span>CHAT</span>
-						</div>
-					</a>
-				</li>
-				<li class="">
-					<a [routerLink]="['/member/gallery']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fas fa-comments"></i></div><span>GALLERY</span>
-						</div>
-					</a>
-				</li>
-				
-				<li class="">
-					<a [routerLink]="['/member/dashboard']" href="javascript:void(0)">
-						<div class="nav-holder">
-							<div class="icon"><i class="fa fa-list"></i></div><span>LOGOUT</span>
-						</div>
-					</a>
-				</li>
-
-			</ul>
+			<div class="nav-item  w-100">
+				<a [routerLink]="['/member/directory']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="javascript:void(0)" class="nav-item-holder">
+					<div class="nav-item-icon">
+						<i class="fas fa-list"></i>
+						<!-- <img src="../assets/backend/navigation_icon/group_icon.png" alt="" class="nav-img"> -->
+					</div>
+					<div class="nav-title">DIRECTORY</div>
+				</a>
+			</div>
+			<div class="nav-item  w-100">
+				<a [routerLink]="['/member/chat']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="javascript:void(0)" class="nav-item-holder">
+					<div class="nav-item-icon">
+						<i class="fas fa-comment-alt"></i>
+						<!-- <img src="../assets/backend/navigation_icon/group_icon.png" alt="" class="nav-img"> -->
+					</div>
+					<div class="nav-title">CHAT</div>
+				</a>
+			</div>
+			<div class="nav-item  w-100">
+				<a [routerLink]="['/member/gallery']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" href="javascript:void(0)" class="nav-item-holder">
+					<div class="nav-item-icon">
+						<i class="fas fa-images"></i>
+						<!-- <img src="../assets/backend/navigation_icon/group_icon.png" alt="" class="nav-img"> -->
+					</div>
+					<div class="nav-title">GALLERY</div>
+				</a>
+			</div>
 		</div>
 	</div>
-
-
-	<main>
-
+	<div class="main-content">
 		<router-outlet></router-outlet>
-	</main>
+	</div>
 	<div class="footer">
 		<div class="clearfix">
 			<div class="row">
@@ -110,8 +81,6 @@
 						<a class="nav" href="">About</a> <span class="divider">&#8226;</span>
 						<a class="nav" href="">Carrers</a> <span class="divider">&#8226;</span>
 						<a class="nav" href="">Tems</a> <span class="divider">&#8226;</span>
-						<a class="nav" href="">Privacy</a> <span class="divider">&#8226;</span>
-						<a class="nav" href="">Press</a>
 					</div>
 				</div>
 				<div class="col-md-3 text-right">
@@ -125,3 +94,126 @@
 		</div>
 	</div>
 </span>
+<!-- <span class="member-layout">
+		<div class="header  d-flex flex-wrap">
+				<div class="col-md-10 mobile-icon d-none">
+						<a class=""><i class="fas fa-bars"></i></a>
+				</div>
+				<div class="col-md-4 right text-right">
+						<div class="name-container">
+								<div class="name" *ngIf="user">{{ user.name }}</div>
+								<div class="dropdown-arrow">
+										<i class="fa fa-caret-down"></i>
+								</div>
+								<div class="dropdown">
+										<div class="dropdown-container">
+												<div (click)="hideDropdown()" routerLink="/member/settings" class="menu">Profile Settings</div>
+												<div (click)="onLogout()" class="menu top-divide">Logouts</div>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+		<div class="sidebar small">
+				<div class="nav-logo">
+						<div class="nav-logo-container">
+								<div class="logo-holder">
+										<a class="collapsed-sidebar d-none"><i class="fas fa-user-graduate"></i></a>
+										<a class="uncollapsed-sidebar"><i class="fas fa-bars"></i></a>
+								</div>
+								<div class="company-name">
+										<a >
+												JAMES OSMSORA
+										</a>
+								</div>
+						</div>
+						
+				</div>
+				<div class="profile-holder active justify-content-center align-items-center">
+						<div class="profile">
+								<div class="img">
+										<a  *ngIf="user">
+												<img id="img" class="img-user" src="{{user.profile}}">
+										</a>
+								</div>
+								<div class="text">
+										<div class="name" *ngIf="user">{{user.name}}</div>
+										<div class="sub" *ngIf="user">{{user.email}}</div>
+								</div>
+						</div>
+				</div>
+				<div class="side-nav">
+						<ul>
+								<li class="">
+										<a [routerLink]="['/member/dashboard']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fas fa-tachometer-alt"></i></div><span>DASHBOARD</span>
+												</div>
+										</a>
+								</li>
+								<li class="">
+										<a [routerLink]="['/member/timeline']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fas fa-user-ninja"></i></div><span>TIMELINE</span>
+												</div>
+										</a>
+								</li>
+								<li class="">
+										<a [routerLink]="['/member/directory']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fas fa-users"></i></div><span>DIRECTORY</span>
+												</div>
+										</a>
+								</li>
+								<li class="">
+										<a [routerLink]="['/member/chat']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fas fa-comments"></i></div><span>CHAT</span>
+												</div>
+										</a>
+								</li>
+								<li class="">
+										<a [routerLink]="['/member/gallery']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fas fa-comments"></i></div><span>GALLERY</span>
+												</div>
+										</a>
+								</li>
+								
+								<li class="">
+										<a [routerLink]="['/member/dashboard']" href="javascript:void(0)">
+												<div class="nav-holder">
+														<div class="icon"><i class="fa fa-list"></i></div><span>LOGOUT</span>
+												</div>
+										</a>
+								</li>
+						</ul>
+				</div>
+		</div>
+		<main>
+				<router-outlet></router-outlet>
+		</main>
+		<div class="footer">
+				<div class="clearfix">
+						<div class="row">
+								<div class="col-md-3 text-left"><div class="copyright">&copy; 2018 james Omosora</div></div>
+								<div class="col-md-6 text-center">
+										<div class="footer-nav">
+												<a class="nav" href="">About</a> <span class="divider">&#8226;</span>
+												<a class="nav" href="">Carrers</a> <span class="divider">&#8226;</span>
+												<a class="nav" href="">Tems</a> <span class="divider">&#8226;</span>
+												<a class="nav" href="">Privacy</a> <span class="divider">&#8226;</span>
+												<a class="nav" href="">Press</a>
+										</div>
+								</div>
+								<div class="col-md-3 text-right">
+										<div class="social-media-links">
+												<a class="nav" href=""><i class="fab fa-facebook-square"></i></a>
+												<a class="nav" href=""><i class="fab fa-twitter-square"></i></a>
+												<a class="nav" href=""><i class="fab fa-linkedin"></i></a>
+										</div>
+								</div>
+						</div>
+				</div>
+		</div>
+</span> -->

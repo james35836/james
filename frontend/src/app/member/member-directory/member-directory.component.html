@@ -1,38 +1,35 @@
 <div class="container">
-	<div class="row">
-		<!-- dashboard header -->
-		<div class="col-md-12">
-			<div class="page-header clearfix mt15 mb20">
-				<div class="left">
-					<h4 class=" text-header">DIRECTORY</h4>
-				</div>
-				
-			</div>
+	<div class="page-header row">
+		<div class="col-md-3 inset-md-9">
+			<h5 class=" text-header">DIRECTORY</h5>
 		</div>
 	</div>
-	<div class="page-content">
-		<div class="row clearfix page-content-header">
-			<div class="col-md-3">
-				<select name="" id="" class="form-control">
-					<option value="">fhgh</option>
-					<option value="">hfgh</option>
-					<option value="">fghfgh</option>
-					<option value="">hfgh</option>
-					<option value="">fgh</option>
-				</select>
-			</div>
-			<div class="col-md-3 offset-md-6">
-				<div class="input-group">
-					<input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
-					<span class="input-group-append">
-						<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
-					</span>
+	
+	<div class="page-content row">
+		<div class="col-md-12 page-content-header">
+			<div class="row clearfix">
+				<div class="col-md-3">
+					<select name="" id="" class="form-control">
+						<option value="">fhgh</option>
+						<option value="">hfgh</option>
+						<option value="">fghfgh</option>
+						<option value="">hfgh</option>
+						<option value="">fgh</option>
+					</select>
+				</div>
+				<div class="col-md-3 offset-md-6">
+					<div class="input-group">
+						<input class="form-control py-2 border-right-0 border" type="search" value="search" id="example-search-input">
+						<span class="input-group-append">
+							<div class="input-group-text bg-transparent"><i class="fa fa-search"></i></div>
+						</span>
+					</div>
 				</div>
 			</div>
 		</div>
 		<span *ngIf = "enabled=='list'">
-			<div *ngIf="member_list" class="row clearfix">
-				<div *ngFor="let data of member_list;let i= index;" class="col-lg-3 col-md-6 col-xs-12 col-sm-6">
+			<div class="page-content-body row" *ngIf="member_list" >
+				<div *ngFor="let data of member_list;let i= index;" class="col-lg-4 col-md-6 col-xs-12 col-sm-6">
 					<div class="card">
 						<div class="box" (click)="memeber_details(i)">
 							<div class="img">
@@ -53,7 +50,7 @@
 			</div>
 		</span>
 		<span *ngIf = "enabled=='details'">
-			<div *ngIf="member_details" class="container profile-details">
+			<div class="page-content-body row profile-details" *ngIf="member_details" >
 				<div class="row">
 					<div class="col-md-4">
 						<div class="profile-img">

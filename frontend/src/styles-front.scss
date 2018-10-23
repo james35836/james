@@ -1,55 +1,74 @@
-
-
-.btn-front
-{
-    text-decoration: none;
-    color: #1425ea !important;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 4px;
-    vertical-align: middle;
-    display: inline-block;
-    border: 2px solid #1425ea;
-    background: #ffffff;
-}
-.btn-customize
-{
-    text-decoration: none !important;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 4px;
-    vertical-align: middle;
-    display: inline-block;
-    border: 2px solid #ffffff;
-    background: #1425ea;
-    color: #fff;
-}
-.btn-primary-custom
-{
-    text-decoration: none !important;
-    padding-top: .5rem;
-    padding-bottom: .5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    border-radius: 4px;
-    vertical-align: middle;
-    display: inline-block;
-    border: 2px solid #1425ea;
-    background: #ffffff;
-    color: #1425ea;
-}
-
-
-
 .front-layout
 {
 
     $displayFont: 'Raleway', sans-serif;
     $contentFont: 'Lato', sans-serif;
+
+    $btnColor : #0899e8;
+    /* GLOBALS */
+    .form-control-icon 
+    {
+        position: absolute;
+        z-index: 2;
+        display: block;
+        width: 31px;
+        line-height: 37px;
+        color: #555555;
+        font-size: 23px;
+        margin-left: 5px;
+    }
+    .btn-single
+    {
+        display: inline-block;
+        background-color: #f4511e;
+        border: none;
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 14px;
+        padding: 10px;
+        width: 100%;
+        transition: all 0.5s;
+        cursor: pointer;
+        text-decoration: none;
+    }
+    .btn-front
+    {
+        text-decoration: none;
+        color: $btnColor !important;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        vertical-align: middle;
+        display: inline-block;
+        border: 2px solid $btnColor;
+        background: #ffffff;
+    }
+    .btn-customize
+    {
+        text-decoration: none !important;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        border-radius: 4px;
+        vertical-align: middle;
+        display: inline-block;
+        border: 2px solid #ffffff;
+        background: $btnColor;
+        color:#fff;
+    }
+    .btn-primary-custom
+    {
+        text-decoration: none !important;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        vertical-align: middle;
+        display: inline-block;
+        border: 2px solid $btnColor;
+        background: #ffffff;
+        color: $btnColor;
+    }
     
 
     @media screen and (max-width: 800px) 
@@ -89,16 +108,13 @@
         position: fixed;
         top: -100px;
         transform: translateY(100px);
-        // transition: transform .5s;
         width: 100%;
         box-shadow: 0 0 20px -10px #000;
         a
         {
-            
             font-size: 13px;
             font-weight: 500;
             letter-spacing: 1px;
-            margin: 15px 5px;
             transition: all .4s;
             padding-right: .5rem;
             padding-left: .5rem;
@@ -110,7 +126,7 @@
         .btn-customize
         {
             text-decoration: none;
-            color: #1425ea  !important;
+            color: $btnColor  !important;
             padding-top: .5rem;
             padding-bottom: .5rem;
             padding-left: 1rem;
@@ -118,20 +134,23 @@
             border-radius: 4px;
             vertical-align: middle;
             display: inline-block;
-            border: 2px solid #1425ea;
+            border: 2px solid $btnColor;
             background: #ffffff;
         }
     }
     nav
     {
         padding:0px;
-        background: #1425ea;
+        background: #0899e8;
         left: 0;
-        min-height: 70px;
         top: 0;
         width: 100%;
         z-index: 9;
         font-family:$displayFont;
+        .alumni-log
+        {
+            max-width: 70px;
+        }
         a
         {
             color: #fff;
@@ -140,7 +159,7 @@
         {
             li
             {
-                padding: 5px 15px 0px 15px;
+                padding: 20px 15px 20px 15px;
                 a
                 {
                     color: #fff;
@@ -158,14 +177,22 @@
                     a
                     {
                         opacity: 1 !important; 
-                        color:#1425ea !important;
+                        color:$btnColor !important;
+                    }
+                } 
+                &.active
+                {
+                    opacity: 0.8;
+                    background: #e6e9e2;
+
+                    a
+                    {
+                        opacity: 1 !important; 
+                        color:$btnColor !important;
                     }
                 } 
             }
-            
-            
         }
-        
     }
 
     main.main-front
@@ -192,18 +219,13 @@
                 margin-bottom: 60px; 
             }
         }
-
-        
-
     }
 
     footer
     {
         position: absolute;
-
- // bottom: 0;
- width: 100%;
-        background-color: #1425ea;
+        width: 100%;
+        background-color: #0876b1;
         color: #eee;
         padding: 50px 0 0;
         font-family:$displayFont;

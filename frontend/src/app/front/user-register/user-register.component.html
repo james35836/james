@@ -26,13 +26,13 @@
 							</div>
 							<div class="form-group">
 								<label for="inputContact">Contact Number</label>
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-address-book form-control-icon"></span>
 								<input [(ngModel)]="add_member.user_phone_1" name="user_phone_1" type="text" id="inputContact" class="form-control" placeholder="Contact Number" required="">
 								<div class="invalid-feedback">Oops, you missed this one.</div>
 							</div>
 							<div class="form-group">
 								<label for="inputContact">Birthdate</label>
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-calendar-alt form-control-icon"></span>
 								<input [(ngModel)]="add_member.user_birthdate" name="user_birthdate" type="text" id="inputBirthdate" class="form-control" placeholder="Birthdate" required="">
 								<div class="invalid-feedback">Oops, you missed this one.</div>
 							</div>
@@ -40,24 +40,24 @@
 						<div class="col-md-6">
 							<div class="form-group">
 								<label for="inputEmail">Email address</label>
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-envelope form-control-icon"></span>
 								<input [(ngModel)]="add_member.email" name="email" type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
 							</div>
 							<div class="form-group">
 								<label for="inputPassword">Password</label>.
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-unlock form-control-icon"></span>
 								<input [(ngModel)]="add_member.password" name="password" type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
 								<div class="invalid-feedback">Enter your password too!</div>
 							</div>
 							<div class="form-group">
 								<label for="inputRPassword">Confirm Password</label>
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-unlock-alt form-control-icon"></span>
 								<input [(ngModel)]="add_member.password_confirmation" name="password_confirmation" type="password" id="inputRPassword" class="form-control" placeholder="Confirm Password" required="">
 								<div class="invalid-feedback">Enter your password too!</div>
 							</div>
 							<div class="form-group" *ngIf="school_year_list">
 								<label for="inputPassword">Year Graduated</label>
-								<span class="fas fa-user form-control-icon"></span>
+								<span class="fas fa-calendar-alt form-control-icon"></span>
 								<select class="form-control" [(ngModel)]="add_member.school_year_id" name="school_year_id">
 									<ng-container *ngIf="school_year_list">
 									<option *ngFor="let list of school_year_list" value="{{list.school_year_id}}">{{list.school_year}}</option>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="card-body row">
 						<div class="col-md-6 mx-auto text-center">
-							<button type="submit" class="btn-register">CREATE ACCOUNT</button>
+							<button type="submit" class="btn-single">CREATE ACCOUNT</button>
 						</div>
 					</div>
 					<div class="card-body row">
